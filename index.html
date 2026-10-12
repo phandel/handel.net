@@ -3,23 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Handel</title>
+  <title>Handel International Homeschool</title>
+  <meta name="description" content="Handel International Homeschool, San Jose, California: equipping and educating international citizens to serve communities locally and abroad.">
+  <link rel="icon" type="image/png" href="images/emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    html,body{height:100%;margin:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-      background:#ffffff;color:#1a1a1a;display:flex;align-items:center;justify-content:center;
-      text-align:center;-webkit-font-smoothing:antialiased;}
-    .card{padding:2rem;}
-    h1{font-size:clamp(2.4rem,8vw,4.5rem);margin:0 0 .5rem;letter-spacing:-.02em;font-weight:800;}
-    p{font-size:1.15rem;color:#5c5c5c;margin:0;text-transform:uppercase;letter-spacing:.18em;}
-    .rule{width:56px;height:4px;background:#e8590c;border-radius:2px;margin:1.5rem auto 0;}
+    :root{
+      --navy:#14284b; --navy-2:#1f3a66; --gold:#b0863a; --gold-soft:#efe4cc;
+      --ink:#1d2433; --muted:#5b6475; --paper:#fbf9f4; --line:#e4dfd3; --white:#fff;
+      --serif:"EB Garamond",Georgia,"Times New Roman",serif;
+      --sans:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:400 1.08rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:var(--navy-2)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+    /* header */
+    header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px;max-width:1080px;margin:0 auto}
+    .bar img{height:52px;width:auto}
+    nav{display:flex;gap:22px;flex-wrap:wrap}
+    nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.02em}
+    nav a:hover{color:var(--gold)}
+
+    /* hero */
+    .hero{position:relative;color:var(--white);background:var(--navy)}
+    .hero-img{position:absolute;inset:0;background:center/cover no-repeat;opacity:.55}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,75,.25),rgba(20,40,75,.85))}
+    .hero .wrap{position:relative;z-index:1;padding-top:120px;padding-bottom:80px}
+    .eyebrow{font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 14px;font-weight:600}
+    .hero h1{font:600 clamp(2rem,5vw,3.4rem)/1.15 var(--serif);margin:0;max-width:820px}
+    .hero p.lede{max-width:640px;font-size:1.15rem;margin:22px 0 0;color:#e8ecf4}
+
+    /* sections */
+    section{padding:72px 0}
+    section.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    h2{font:600 clamp(1.7rem,3.4vw,2.4rem)/1.2 var(--serif);color:var(--navy);margin:0 0 8px}
+    h2+.rule{width:48px;height:3px;background:var(--gold);border-radius:2px;margin:0 0 28px}
+    h3{font:600 1.35rem/1.3 var(--serif);color:var(--navy);margin:28px 0 6px}
+    p{margin:0 0 1em}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+
+    /* stats */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 40px}
+    .stat{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 18px;text-align:center}
+    .stat b{display:block;font:600 2.4rem/1 var(--serif);color:var(--gold)}
+    .stat span{display:block;margin-top:8px;font-size:.92rem;color:var(--muted);line-height:1.35}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:36px}
+    .gallery figure{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--line);grid-column:span 2}
+    .gallery figure.wide{grid-column:span 4}
+    .gallery img{width:100%;height:260px;object-fit:cover}
+    .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;color:#fff;font-size:.9rem;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+
+    /* lists */
+    .partners{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .partners li{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+    .partners a{display:block;font-size:.9rem;color:var(--muted);text-decoration:none}
+    .partners strong{color:var(--navy)}
+
+    /* tables */
+    table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:1rem}
+    th,td{padding:12px 16px;text-align:right;border-bottom:1px solid var(--line)}
+    th:first-child,td:first-child{text-align:left}
+    thead th{background:var(--navy);color:#fff;font-weight:600}
+    tbody tr:last-child td{border-bottom:0;font-weight:600}
+    td.hl{color:var(--gold);font-weight:600}
+    .scale{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+    .scale span{background:var(--gold-soft);color:var(--navy);border-radius:6px;padding:4px 10px;font-weight:600;font-size:.95rem}
+    .note{font-size:.92rem;color:var(--muted)}
+
+    /* contact form */
+    .contact{display:grid;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px}
+    .contact label{display:grid;gap:6px;font-weight:600;color:var(--navy);font-size:.95rem}
+    .contact input,.contact select,.contact textarea{font:inherit;font-weight:400;color:var(--ink);padding:10px 12px;border:1px solid #cfc8b8;border-radius:8px;background:var(--paper);width:100%}
+    .contact input:focus,.contact select:focus,.contact textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+    .contact button{justify-self:start;font:600 1rem var(--sans);color:#fff;background:var(--navy);border:0;border-radius:8px;padding:12px 22px;cursor:pointer}
+    .contact button:hover{background:var(--navy-2)}
+    .contact button:disabled{opacity:.6;cursor:default}
+    .contact .hp{display:none}
+    .form-status{margin:0;font-weight:600}
+    .form-status.ok{color:#2f6b3a}
+    .form-status.err{color:#a3361f}
+
+    /* footer */
+    footer{background:var(--navy);color:#cfd6e4;padding:48px 0;font-size:.98rem}
+    footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+    footer strong{color:#fff;font:600 1.4rem var(--serif);display:block;margin-bottom:4px}
+    footer a{color:var(--gold-soft)}
+
+    @media (max-width:820px){
+      .two{grid-template-columns:1fr;gap:8px}
+      .stats{grid-template-columns:1fr 1fr}
+      .partners{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .gallery figure,.gallery figure.wide{grid-column:span 1}
+      .gallery figure.wide:first-child{grid-column:span 2}
+      .gallery img{height:200px}
+      nav{display:none}
+      .hero .wrap{padding-top:80px;padding-bottom:56px}
+      section{padding:52px 0}
+    }
+    @media (max-width:480px){
+      .partners{grid-template-columns:1fr}
+      th,td{padding:10px 8px;font-size:.92rem}
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Handel</h1>
-    <p>Coming soon</p>
-    <div class="rule"></div>
+
+<header>
+  <div class="bar">
+    <a href="#top"><img src="images/logo.png" alt="Handel International Homeschool"></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#global">Global Learning</a>
+      <a href="#academics">Academics</a>
+      <a href="#profile">School Profile</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-img" style="background-image:url('images/hero.jpg')"></div>
+  <div class="wrap">
+    <p class="eyebrow">San Jose, California · Est. 2020</p>
+    <h1>Equipping and educating international citizens to serve communities locally and abroad.</h1>
+    <p class="lede">A college-preparatory homeschool with immersion in German and Spanish, extended study abroad, and service at the heart of everything we learn.</p>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap two">
+    <div>
+      <h2>Our Background</h2>
+      <div class="rule"></div>
+      <p>Handel International Homeschool was established in 2020 to foster global understanding and best equip our individual students to serve humanity. We were ready to begin a more personalized education that would let our students deepen and explore their strengths and passions beyond grade-level restrictions, while continuing to build their fluency in German and Spanish.</p>
+      <p>Our principal, Julie Handel, is a former small-business consultant and a homeschooled student, and our head of school, Peter Handel, is an accomplished engineer and a descendant of a long line of college professors passionate about learning. Our high school program operates under the auspices of The King’s Academy PSP, a registered California private school satellite program compliant with California Education Code § 33190.</p>
+    </div>
+    <div>
+      <h2>Our Values</h2>
+      <div class="rule"></div>
+      <p>Our faith guides our homeschooling values: <strong>equipping and educating international citizens to serve communities locally and abroad.</strong></p>
+      <p>Intentional homeschooling has trained our students to flourish in intergenerational environments. Instruction from accomplished community members and teaching opportunities with peers and younger community members allow for richer learning and the chance to pass on the blessing of learning to others. We intentionally cultivate these investments and skill-building for the good of the community and the ultimate glory of our Creator.</p>
+    </div>
+  </div>
+</section>
+
+<section id="global" class="alt">
+  <div class="wrap">
+    <h2>Learning Across the World</h2>
+    <div class="rule"></div>
+    <div class="stats">
+      <div class="stat"><b>12</b><span>countries across Europe, Asia &amp; Latin America</span></div>
+      <div class="stat"><b>77</b><span>days per year, on average, away from California (2023–2026)</span></div>
+      <div class="stat"><b>83%</b><span>of lodging in local homes or dormitories</span></div>
+      <div class="stat"><b>3</b><span>languages of instruction: English, German &amp; Spanish</span></div>
+    </div>
+    <div class="two">
+      <div>
+        <p>Because of our homeschooling schedule, we have been able to travel extensively for longer periods, exposing our children to scholastic, ecclesiastical, cultural, and historical experiences that have enriched their understanding of our global community. Immersive language weeks, attending a public German university-track high school for multiple months, participating in a horse camp in Spain, working with orphans in Mexico, and with special-needs children in Peru have deepened their understanding of cultural strengths and differences.</p>
+        <p>Their experiences in Italy, Switzerland, and Japan have shown them how much a shared language matters in a given situation, while also showing them how much they can appreciate cultural differences without that same depth of understanding.</p>
+      </div>
+      <div>
+        <p>While at home, we surround them as much as possible with native German and Spanish speakers. Their father’s daily conversations are enriched by extended family visiting for months at a time; cousins, grandparents, weekly tutors, church members, au pairs, and international students have all blessed our children with their unique perspectives and regional language insights.</p>
+        <p>Serving our community in Silicon Valley’s rich cultural landscape has exposed them to many, if not all, Spanish-speaking countries around the world. Time at Sacred Heart Food Bank handing out food bags, or trips with our church to pass out food in underserved neighborhoods, led to many Spanish conversations, sometimes with our children serving as translators. Outings to the local taqueria started with our children explaining how they could speak Spanish without an English accent, and why they said some words as if they were Mexican and others as if they were from Spain.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="images/peru-machu-picchu.jpg" alt="Our family on the terraces above Machu Picchu" loading="lazy"><figcaption>Machu Picchu, Peru</figcaption></figure>
+      <figure><img src="images/peru-snorkel.jpg" alt="A student snorkeling beside a sea turtle" loading="lazy"><figcaption>Snorkeling with sea turtles</figcaption></figure>
+      <figure><img src="images/spain-church.jpg" alt="Worship service at a church in Spain" loading="lazy"><figcaption>Sunday worship in Spain</figcaption></figure>
+      <figure class="wide"><img src="images/spain-paella.jpg" alt="Students watching paella being cooked in a Spanish restaurant" loading="lazy"><figcaption>Learning how paella is made, Spain</figcaption></figure>
+      <figure><img src="images/germany-lake.jpg" alt="Students looking out over a lake in Germany" loading="lazy"><figcaption>Lakeside in Germany</figcaption></figure>
+      <figure><img src="images/germany-courtyard.jpg" alt="Children playing in a courtyard in Germany" loading="lazy"><figcaption>Playtime with German friends</figcaption></figure>
+      <figure><img src="images/mexico-tidepools.jpg" alt="Our family exploring tide pools at sunset in Mexico" loading="lazy"><figcaption>Tide pools in Mexico</figcaption></figure>
+      <figure class="wide"><img src="images/swiss-village.jpg" alt="An Alpine village in Switzerland" loading="lazy"><figcaption>Alpine village, Switzerland</figcaption></figure>
+      <figure><img src="images/swiss-alps-socks.jpg" alt="Hand-knit socks against a window view of the Swiss Alps" loading="lazy"><figcaption>Fluffy socks in the Alps</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="academics">
+  <div class="wrap">
+    <h2>Academics</h2>
+    <div class="rule"></div>
+    <div class="two">
+      <div>
+        <h3>Programs</h3>
+        <p>Most core courses are taught in English, with enrichment programs offered in immersive German and Spanish. Most class sizes range from 12 to 20, except for community college courses.</p>
+        <p>Beyond a love of spoken language, our family loves the language of the universe: math. Homeschooling lets each student progress at their own pace, choosing between co-op classes led by doctorate-holding moms or passionate subject experts at our local homeschool support program, AoPS online courses, and community college classes. This community has enabled our students to study chemistry and physics at advanced levels and apply those passions in robotics clubs, winning UC Berkeley’s Pioneers in Engineering robotics contest three years and counting. We have competed locally and nationally in speech and debate and, through a drama club, performed lead roles in one-act plays.</p>
+      </div>
+      <div>
+        <h3>Curriculum</h3>
+        <p>While students choose their classes, the administration oversees course categories, standards, and daily activities. Choosing their own courses fosters responsibility and decision-making, and cultivates independence and self-discipline.</p>
+        <p>All courses are college-preparatory and pedagogically deep. Inquiry begins with primary-source analysis, high-level informational and literary texts, and the scientific method. Analysis then builds on sequential theoretical understanding and logic. Finally, students synthesize evidence-based arguments and conclusions. Educational partners allow students to take College Board–certified AP courses as well as courses for concurrent college credit.</p>
+      </div>
+    </div>
+    <h3>Educational Partners</h3>
+    <ul class="partners">
+      <li><strong>Live Oak Academy</strong><a href="https://liveoakacademy.org">liveoakacademy.org</a></li>
+      <li><strong>Foothill College</strong><a href="https://foothill.edu">foothill.edu</a></li>
+      <li><strong>De Anza College</strong><a href="https://deanza.edu">deanza.edu</a></li>
+      <li><strong>International Alert Academy</strong><a href="https://alertacademy.com">alertacademy.com</a></li>
+      <li><strong>West Valley College</strong><a href="https://westvalley.edu">westvalley.edu</a></li>
+      <li><strong>Bilingual Bridges</strong><a href="https://bilingualbridges.com">bilingualbridges.com</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="profile" class="alt">
+  <div class="wrap">
+    <h2>School Profile</h2>
+    <div class="rule"></div>
+    <div class="two">
+      <div>
+        <h3>Grades</h3>
+        <p>Home courses are personalized: syllabi and chosen curriculum are completed through projects, labs, and presentations, which count toward the final grade. Grades in courses taken outside the home are determined by those instructors and faithfully transmitted to our transcript. Grades from all courses attempted are reported.</p>
+        <div class="scale"><span>A 90–100%</span><span>B 80–89%</span><span>C 70–79%</span><span>D 60–69%</span><span>F ≤59%</span></div>
+        <p>We report both weighted and unweighted GPA. All subjects except P.E. and Bible are included. AP and community college courses are weighted +1.0. A 5-unit course represents 6–9 hours per week of instruction, homework, and study.</p>
+        <h3>Graduation Requirements</h3>
+        <p>220 credits, including courses satisfying the minimum requirements under California law and San Jose Unified School District, plus 15 community service hours each year.</p>
+      </div>
+      <div>
+        <h3>Standardized Testing</h3>
+        <p>PSAT, SAT, AP, Avant STAMP 4S Language Assessment (ACTFL framework), and the National Spanish Exam results support the rigor of coursework and the validity of grades.</p>
+        <p class="note">SAT 2026 — Class of 2027 (one graduate), compared with national and California averages:</p>
+        <table>
+          <thead><tr><th></th><th>National</th><th>California</th><th>Student</th></tr></thead>
+          <tbody>
+            <tr><td>Reading &amp; Writing</td><td>528</td><td>560</td><td class="hl">780</td></tr>
+            <tr><td>Math</td><td>517</td><td>548</td><td class="hl">800</td></tr>
+            <tr><td>Total</td><td>1045</td><td>1108</td><td class="hl">1580</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap two">
+    <div>
+      <h2>Contact Us</h2>
+      <div class="rule"></div>
+      <p>College admissions representatives, counselors, and families are welcome to reach out with questions about our program, or to request a school profile, transcript, or course descriptions.</p>
+      <p>Send us a note and we’ll reply by email.</p>
+    </div>
+    <form class="contact" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="a8340ab7-7889-4d4c-8bae-544869be9086">
+      <input type="hidden" name="subject" value="New message from handel.net">
+      <input type="hidden" name="from_name" value="handel.net contact form">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label>Name<input type="text" name="name" required autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>I am a…
+        <select name="role">
+          <option>College admissions representative</option>
+          <option>School counselor</option>
+          <option>Homeschool family</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button type="submit">Send message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>Handel International Homeschool</strong>
+      San Jose, California · <a href="#contact">Contact us</a>
+    </div>
+    <div class="note" style="color:#9aa6bd">Updated October 2026</div>
+  </div>
+</footer>
+
+<script>
+  // Send the contact form in the background so visitors stay on the page.
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target, btn = form.querySelector('button'), status = form.querySelector('.form-status');
+    btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      form.reset();
+      status.className = 'form-status ok'; status.textContent = 'Thank you! Your message has been sent.';
+    } catch (err) {
+      status.className = 'form-status err'; status.textContent = 'Sorry, something went wrong. Please try again in a moment.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+
 </body>
 </html>
