@@ -110,6 +110,36 @@
       .hero .wrap{padding-top:80px;padding-bottom:56px}
       section{padding:52px 0}
     }
+    /* print / PDF: keep colors and the desktop layout, avoid awkward page breaks */
+    @page{size:letter;margin:.35in 0}
+    @media print{
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      html{font-size:13px}
+      body{background:var(--paper)}
+      header{position:static}
+      .bar{justify-content:center}
+      nav{display:none}
+      .wrap{max-width:none;padding:0 .55in}
+      .hero .wrap{padding-top:56px;padding-bottom:40px}
+      section{padding:26px 0}
+      h2+.rule{margin-bottom:18px}
+      .screen-only{display:none}
+      #global,#profile{break-before:page}
+      footer{padding:18px 0;break-inside:avoid}
+      .two{grid-template-columns:1fr 1fr;gap:32px}
+      .stats{grid-template-columns:repeat(4,1fr)}
+      .partners{grid-template-columns:repeat(3,1fr)}
+      .gallery{grid-template-columns:repeat(6,1fr);gap:8px}
+      .gallery figure{grid-column:span 2}
+      .gallery figure.wide,.gallery figure.wide:first-child{grid-column:span 4}
+      .gallery img{height:135px}
+      .stat,.gallery figure,.partners li,table,.scale,h3{break-inside:avoid}
+      h2,h3{break-after:avoid}
+      #contact{display:none}
+      .print-only{display:block!important}
+    }
+    .print-only{display:none}
+
     @media (max-width:480px){
       .partners{grid-template-columns:1fr}
       th,td{padding:10px 8px;font-size:.92rem}
@@ -178,15 +208,15 @@
       </div>
     </div>
     <div class="gallery">
-      <figure class="wide"><img src="images/peru-machu-picchu.jpg" alt="Our family on the terraces above Machu Picchu" loading="lazy"><figcaption>Machu Picchu, Peru</figcaption></figure>
-      <figure><img src="images/peru-snorkel.jpg" alt="A student snorkeling beside a sea turtle" loading="lazy"><figcaption>Snorkeling with sea turtles</figcaption></figure>
-      <figure><img src="images/spain-church.jpg" alt="Worship service at a church in Spain" loading="lazy"><figcaption>Sunday worship in Spain</figcaption></figure>
-      <figure class="wide"><img src="images/spain-paella.jpg" alt="Students watching paella being cooked in a Spanish restaurant" loading="lazy"><figcaption>Learning how paella is made, Spain</figcaption></figure>
-      <figure><img src="images/germany-lake.jpg" alt="Students looking out over a lake in Germany" loading="lazy"><figcaption>Lakeside in Germany</figcaption></figure>
-      <figure><img src="images/germany-courtyard.jpg" alt="Children playing in a courtyard in Germany" loading="lazy"><figcaption>Playtime with German friends</figcaption></figure>
-      <figure><img src="images/mexico-tidepools.jpg" alt="Our family exploring tide pools at sunset in Mexico" loading="lazy"><figcaption>Tide pools in Mexico</figcaption></figure>
-      <figure class="wide"><img src="images/swiss-village.jpg" alt="An Alpine village in Switzerland" loading="lazy"><figcaption>Alpine village, Switzerland</figcaption></figure>
-      <figure><img src="images/swiss-alps-socks.jpg" alt="Hand-knit socks against a window view of the Swiss Alps" loading="lazy"><figcaption>Fluffy socks in the Alps</figcaption></figure>
+      <figure class="wide"><img src="images/peru-machu-picchu.jpg" alt="Our family on the terraces above Machu Picchu"><figcaption>Machu Picchu, Peru</figcaption></figure>
+      <figure><img src="images/peru-snorkel.jpg" alt="A student snorkeling beside a sea turtle"><figcaption>Snorkeling with sea turtles</figcaption></figure>
+      <figure><img src="images/spain-church.jpg" alt="Worship service at a church in Spain"><figcaption>Sunday worship in Spain</figcaption></figure>
+      <figure class="wide"><img src="images/spain-paella.jpg" alt="Students watching paella being cooked in a Spanish restaurant"><figcaption>Learning how paella is made, Spain</figcaption></figure>
+      <figure><img src="images/germany-lake.jpg" alt="Students looking out over a lake in Germany"><figcaption>Lakeside in Germany</figcaption></figure>
+      <figure><img src="images/germany-courtyard.jpg" alt="Children playing in a courtyard in Germany"><figcaption>Playtime with German friends</figcaption></figure>
+      <figure><img src="images/mexico-tidepools.jpg" alt="Our family exploring tide pools at sunset in Mexico"><figcaption>Tide pools in Mexico</figcaption></figure>
+      <figure class="wide"><img src="images/swiss-village.jpg" alt="An Alpine village in Switzerland"><figcaption>Alpine village, Switzerland</figcaption></figure>
+      <figure><img src="images/swiss-alps-socks.jpg" alt="Hand-knit socks against a window view of the Swiss Alps"><figcaption>Fluffy socks in the Alps</figcaption></figure>
     </div>
   </div>
 </section>
@@ -283,7 +313,7 @@
   <div class="wrap">
     <div>
       <strong>Handel International Homeschool</strong>
-      San Jose, California · <a href="#contact">Contact us</a>
+      San Jose, California<span class="screen-only"> · <a href="#contact">Contact us</a></span><span class="print-only">Contact us through the form at handel.net</span>
     </div>
     <div class="note" style="color:#9aa6bd">Updated October 2026</div>
   </div>
