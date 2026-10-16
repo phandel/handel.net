@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Handel Family Beach Lookbook</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../images/emblem.png">
+<style>body{margin:0} img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,400;1,6..96,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a printed lookbook. Wide illustrated group scene up top, a fabric-swatch palette strip, then one card per person with a drawn outfit. */
+  :root{
+    --bg:#f6f3ee; --paper:#fffdf9; --ink:#2b2a2e; --muted:#6c6862; --line:#e3ddd3;
+    --sea:#5f7f86; --sand:#e9dcc6; --accent:#9c4f2e;
+    --sky1:#f3d9bf; --sky2:#d9e1e2; --water:#9fb4b5; --beach:#e8d8bd; --beach2:#dcc7a5;
+    --display:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif;
+    --body:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){--bg:#1c1d20; --paper:#25262a; --ink:#ece7df; --muted:#a8a29a; --line:#3a3a3f; --sea:#94b3b9; --sand:#4a4237; --accent:#e0936b;
+      --sky1:#5a4a45; --sky2:#38454b; --water:#4d6266; --beach:#6a5c48; --beach2:#5c4f3d; color-scheme:dark}
+  }
+  :root[data-theme="dark"]{--bg:#1c1d20; --paper:#25262a; --ink:#ece7df; --muted:#a8a29a; --line:#3a3a3f; --sea:#94b3b9; --sand:#4a4237; --accent:#e0936b;
+    --sky1:#5a4a45; --sky2:#38454b; --water:#4d6266; --beach:#6a5c48; --beach2:#5c4f3d; color-scheme:dark}
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+  header.top{padding-block:40px 18px}
+  .eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sea);font-weight:600;margin:0}
+  h1{font:500 clamp(2.2rem,6vw,3.8rem)/1.02 var(--display);margin:.25em 0 .2em;text-wrap:balance;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{max-width:62ch;color:var(--muted);margin:0}
+  .scene{margin-top:26px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,var(--sky1),var(--sky2) 48%,var(--water) 48.2%,var(--water) 60%,var(--beach) 60.2%,var(--beach2));}
+  .scene-scroll{overflow-x:auto}
+  .scene svg{display:block;width:100%;min-width:720px;height:auto}
+  .scene-cap{font-size:.85rem;color:var(--muted);margin:10px 2px 0}
+  h2{font:500 clamp(1.6rem,3.6vw,2.3rem)/1.1 var(--display);margin:0 0 .35em;text-wrap:balance}
+  section{padding-block:38px}
+  .intro{max-width:62ch;color:var(--muted);margin:0 0 20px}
+  /* palette */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .sw{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .sw .chip{height:64px}
+  .sw div.t{padding:8px 10px 10px}
+  .sw b{display:block;font-weight:600;font-size:.92rem}
+  .sw span{font-size:.8rem;color:var(--muted)}
+  .rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 26px;margin-top:22px}
+  .rule p{margin:0;font-size:.93rem}
+  .rule b{color:var(--ink)}
+  /* people */
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto 1fr;gap:4px 14px;padding:16px 16px 16px 6px}
+  .card svg{width:120px;height:300px;grid-row:span 2;align-self:start}
+  .card h3{font:500 1.35rem/1.15 var(--display);margin:0}
+  .card .who{font-size:.8rem;color:var(--muted);margin:2px 0 8px;letter-spacing:.02em}
+  .card .look{margin:0 0 8px;font-weight:500}
+  .card ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--muted)}
+  .card li{margin:2px 0}
+  .dots{display:flex;gap:5px;margin:6px 0 2px}
+  .dots i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:block}
+  .maybe{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border:1px dashed var(--muted);color:var(--muted);border-radius:999px;padding:1px 7px;margin-left:8px;vertical-align:1px;font-family:var(--body);white-space:nowrap}
+  .note{background:var(--sand);border-radius:10px;padding:12px 16px;font-size:.92rem;max-width:72ch}
+  /* practical */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+  .cols h3{font:500 1.2rem var(--display);margin:0 0 6px}
+  .cols ul{margin:0;padding-left:1.1em}
+  .cols li{margin:4px 0}
+  .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+  .groups div{border-top:2px solid var(--line);padding-top:8px;font-size:.92rem}
+  .groups b{display:block}
+  footer{padding-block:20px 50px;color:var(--muted);font-size:.85rem}
+  @media (max-width:420px){.card{grid-template-columns:96px minmax(0,1fr)}.card svg{width:96px;height:240px}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Family portraits · on the beach · November</p>
+    <h1>Driftwood &amp; <em>golden hour</em></h1>
+    <p class="lede">A coordinated, not matching, palette for ten people: warm autumn colors around Julie’s dress, cooled down with sea-blues and soft neutrals that look right against grey-blue water and pale sand. Each look below starts from what that person asked for.</p>
+    <div class="scene">
+      <div class="scene-scroll"><svg id="scene" viewBox="0 0 1000 400" role="img" aria-label="Illustration of the whole group standing on the beach in their outfits"></svg></div>
+    </div>
+    <p class="scene-cap">Suggested standing order for the full group. Blues, warm tones and neutrals are spread out so no color clumps in one corner. Illustrations show color and silhouette only.</p>
+  </header>
+
+  <section id="palette">
+    <h2>The palette</h2>
+    <p class="intro">Nine colors. Everyone wears one or two of them, plus a neutral, so the photo reads as one family without anyone matching.</p>
+    <div class="swatches" id="swatches"></div>
+    <div class="rule">
+      <p><b>Leave at home:</b> pure white and pure black (they blow out or go flat on sand), logos and words, neon, small busy prints, and everyone in identical jeans.</p>
+      <p><b>Do bring texture:</b> knit, linen, corduroy, silk, suede. On an overcast November beach, texture gives the photo depth when the light is soft.</p>
+      <p><b>Denim:</b> keep it to one or two people (Adele, plus a dark wash on Peter or Robert). Mix washes rather than matching.</p>
+    </div>
+  </section>
+
+  <section id="looks">
+    <h2>The looks</h2>
+    <p class="intro">Drawn mockups show each person’s colors and outline. Swap a piece freely, as long as it stays inside its color family.</p>
+    <div class="people" id="people"></div>
+  </section>
+
+  <section id="shots">
+    <h2>Groupings to ask for</h2>
+    <p class="intro">Photographers move fast at sunset. Hand them this list so nobody gets missed.</p>
+    <div class="groups">
+      <div><b>Everyone</b>Standing order as drawn above, then a relaxed version sitting on a blanket with Grandma in the middle.</div>
+      <div><b>The Handel six</b>Peter, Julie, Leo, Eden, Adele, August.</div>
+      <div><b>Grandma and her girls</b>Geri, Julie and Amy, arm in arm.</div>
+      <div><b>Grandma and the grandkids</b>All the cousins around Geri.</div>
+      <div><b>The Buchanans</b>Amy, Marcus and Robert.</div>
+      <div><b>Couples</b>Peter and Julie, Amy and Marcus.</div>
+      <div><b>The four kids</b>Walking along the waterline, away from the camera, then back toward it.</div>
+      <div><b>The cousins</b>Leo, Eden, Adele, August and Robert.</div>
+    </div>
+  </section>
+
+  <section id="november">
+    <h2>November on the beach</h2>
+    <div class="cols">
+      <div>
+        <h3>Timing and light</h3>
+        <ul>
+          <li>Sunset is around 4:55 to 5:10 pm after the clocks change on November 1. Start about 3:45 so the group shots happen in the last good hour.</li>
+          <li>Thin coastal clouds are flattering. They soften faces and turn the water silver-blue, which is what this palette is built for.</li>
+          <li>Face the group slightly away from the sun so nobody squints. Grandma gets the spot with the least glare.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Warmth and comfort</h3>
+        <ul>
+          <li>Expect 55 to 62 °F with wind. Wear a thin layer under dresses and blouses, and bring a coat for each person to throw on between shots.</li>
+          <li>Barefoot looks best on sand, but cold sand can be hard on bare feet. Neutral flat sandals for anyone who wants them, especially Geri.</li>
+          <li>Bring a folding stool or a blanket so Grandma can sit for the bigger groups.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Bag checklist</h3>
+        <ul>
+          <li>Lint roller (the fluffy sweater sheds), hair ties and clips for the wind, a small mirror</li>
+          <li>Two neutral blankets, wipes for sandy feet, a towel to stand on while changing shoes</li>
+          <li>Water, snacks for the younger kids, a bag for shoes and jackets</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="note"><b>One assumption to check:</b> I drew Julie’s dress in a rust/terracotta tone because that’s the most common autumn dress color. If it’s actually burgundy, mustard, olive or a print, tell me and I’ll shift the palette around it. Everything else is chosen to sit next to it.</p>
+</div>
+<footer class="wrap">Made for the Handel, Gannaway and Buchanan families.</footer>
+
+<script>
+const C={
+  rust:["Rust","#a24f2f"], camel:["Camel","#b88a5a"], mustard:["Mustard","#c9973a"], apricot:["Apricot","#e08a55"],
+  olive:["Olive","#6f7442"], seaglass:["Sea glass","#8fb5ad"], dusty:["Dusty blue","#7f97b0"], navy:["Deep navy","#2f3c55"],
+  oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#3d4c66"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"]
+};
+const col=k=>C[k][1];
+const palette=[["rust","Julie"],["camel","Peter · Geri’s cardigan"],["mustard","Adele"],["apricot","Leo"],["olive","August"],["seaglass","Amy"],["dusty","Eden"],["navy","Marcus"],["oat","Geri · Robert"]];
+document.getElementById("swatches").innerHTML=palette.map(([k,w])=>`<div class="sw"><div class="chip" style="background:${col(k)}"></div><div class="t"><b>${C[k][0]}</b><span>${w}</span></div></div>`).join("");
+
+/* figure drawing: viewBox 0 0 120 300, feet at y≈292 */
+function shade(hex,amt){let n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;const f=v=>Math.max(0,Math.min(255,Math.round(v+(amt<0?v*amt:(255-v)*amt))));return "#"+[f(r),f(g),f(b)].map(v=>v.toString(16).padStart(2,"0")).join("")}
+function hairBack(p){const h=p.hair,c=p.hairColor;
+  if(h==="long")return `<path d="M44 34 Q44 14 60 14 Q76 14 76 34 L80 104 Q60 112 40 104 Z" fill="${c}"/>`;
+  if(h==="ponytail")return `<path d="M72 30 Q86 40 80 86 Q76 92 72 84 Q76 54 68 36Z" fill="${c}"/>`;
+  if(h==="shoulder")return `<path d="M44 34 Q44 14 60 14 Q76 14 76 34 L78 70 Q60 76 42 70 Z" fill="${c}"/>`;
+  if(h==="bun")return `<circle cx="60" cy="16" r="8" fill="${c}"/>`;
+  return "";}
+function hairFront(p){const h=p.hair,c=p.hairColor;
+  if(h==="short")return `<path d="M46 34 Q45 17 60 17 Q75 17 74 34 Q71 25 60 25 Q49 25 46 34Z" fill="${c}"/>`;
+  if(h==="medium")return `<path d="M45 38 Q43 16 60 16 Q77 16 75 38 Q73 26 64 24 Q56 30 47 28 Q46 32 45 38Z" fill="${c}"/>`;
+  if(h==="white")return `<path d="M45 36 Q42 16 60 16 Q78 16 75 36 Q74 28 69 25 Q62 22 56 25 Q49 26 45 36Z" fill="${c}"/><circle cx="47" cy="30" r="4" fill="${c}"/><circle cx="73" cy="30" r="4" fill="${c}"/>`;
+  if(h==="gray")return `<path d="M46 32 Q46 17 60 17 Q74 17 74 32 Q70 24 60 24 Q50 24 46 32Z" fill="${c}"/>`;
+  return `<path d="M45 36 Q44 16 60 16 Q76 16 75 36 Q70 24 60 23 Q50 24 45 36Z" fill="${c}"/>`;}
+function arms(p,sleeve,len){const s=p.skin;let o="";
+  const L=`M40 64 Q32 66 31 92 L29 146 L36 147 L40 98 Z`, R=`M80 64 Q88 66 89 92 L91 146 L84 147 L80 98 Z`;
+  o+=`<path d="${L}" fill="${s}"/><path d="${R}" fill="${s}"/><circle cx="32.5" cy="150" r="4.5" fill="${s}"/><circle cx="87.5" cy="150" r="4.5" fill="${s}"/>`;
+  if(sleeve){const y=len==="three"?118:len==="short"?84:144;
+    o+=`<path d="M40 63 Q31 65 30.5 92 L${y>140?29:30} ${y} L${y>140?36.5:37} ${y+1} L40.5 98 Z" fill="${sleeve}"/><path d="M80 63 Q89 65 89.5 92 L${y>140?91:90} ${y} L${y>140?83.5:83} ${y+1} L79.5 98 Z" fill="${sleeve}"/>`;}
+  return o;}
+function legs(p,kind,c){const s=p.skin;
+  const feet=p.shoes?`<ellipse cx="51" cy="291" rx="7" ry="3.2" fill="${p.shoes}"/><ellipse cx="69" cy="291" rx="7" ry="3.2" fill="${p.shoes}"/>`:`<ellipse cx="51" cy="291" rx="6" ry="2.8" fill="${s}"/><ellipse cx="69" cy="291" rx="6" ry="2.8" fill="${s}"/>`;
+  if(kind==="bare")return `<path d="M47 200 L49 288 L54 288 L58 200Z" fill="${s}"/><path d="M62 200 L66 288 L71 288 L73 200Z" fill="${s}"/>`+feet;
+  if(kind==="wide")return `<path d="M42 146 L78 146 L80 286 L62 286 L60 170 L58 286 L40 286Z" fill="${c}"/><path d="M60 170 L60 286" stroke="${shade(c,-.18)}" stroke-width="1"/>`+feet;
+  if(kind==="jeans")return `<path d="M43 146 L77 146 L76 287 L63 287 L60 172 L57 287 L44 287Z" fill="${c}"/><path d="M60 172 L60 287" stroke="${shade(c,-.25)}" stroke-width="1"/><path d="M47 182 L48 230 M73 182 L72 230" stroke="${shade(c,.22)}" stroke-width="4" opacity=".45"/><path d="M44 281 L57 281 M63 281 L76 281" stroke="${shade(c,.2)}" stroke-width="3"/>`+feet;
+  return `<path d="M43 146 L77 146 L75 287 L63 287 L60 172 L57 287 L45 287Z" fill="${c}"/><path d="M60 172 L60 287" stroke="${shade(c,-.2)}" stroke-width="1"/><path d="M45 280 L57 280 M63 280 L75 280" stroke="${shade(c,-.12)}" stroke-width="2.5"/>`+feet;}
+function torso(c,len,tex){const y=len||150;
+  let o=`<path d="M41 62 Q60 56 79 62 L80 98 L76 ${y} L44 ${y} L40 98 Z" fill="${c}"/>`;
+  if(tex==="fluffy")o+=`<path d="M41 62 Q60 56 79 62 L80 98 L76 ${y} L44 ${y} L40 98 Z" fill="none" stroke="${shade(c,.25)}" stroke-width="3" stroke-dasharray="1.2 2.4" stroke-linecap="round"/><path d="M44 ${y-6} L76 ${y-6}" stroke="${shade(c,-.15)}" stroke-width="5" stroke-dasharray="1 1.6"/>`;
+  if(tex==="knit")o+=`<path d="M44 ${y-5} L76 ${y-5}" stroke="${shade(c,-.12)}" stroke-width="5" stroke-dasharray="1 1.6"/>`;
+  if(tex==="buttons")o+=`<path d="M60 62 L60 ${y}" stroke="${shade(c,-.18)}" stroke-width="1"/><path d="M53 60 L60 70 L67 60" fill="none" stroke="${shade(c,-.2)}" stroke-width="1.5"/>`+[80,96,112,128].map(v=>`<circle cx="62" cy="${v}" r="1.1" fill="${shade(c,-.3)}"/>`).join("");
+  if(tex==="henley")o+=`<path d="M60 60 L60 80" stroke="${shade(c,-.2)}" stroke-width="1.2"/><circle cx="60" cy="68" r="1" fill="${shade(c,-.3)}"/><circle cx="60" cy="75" r="1" fill="${shade(c,-.3)}"/>`+[0,1,2,3,4,5,6].map(i=>`<path d="M42 ${86+i*9} L78 ${86+i*9}" stroke="${shade(c,-.07)}" stroke-width="1"/>`).join("");
+  if(tex==="zip")o+=`<path d="M53 59 L60 66 L67 59 L67 54 L53 54Z" fill="${c}"/><path d="M60 54 L60 82" stroke="${shade(c,.3)}" stroke-width="1.4"/>`;
+  if(tex==="cable")o+=[50,60,70].map(x=>`<path d="M${x} 70 q4 6 0 12 q-4 6 0 12 q4 6 0 12 q-4 6 0 12 q4 6 0 12 q-4 6 0 12" fill="none" stroke="${shade(c,-.1)}" stroke-width="2"/>`).join("");
+  return o;}
+function overshirt(c,inner){return `<path d="M41 62 Q50 58 56 60 L56 156 L42 156 L40 98 Z" fill="${c}"/><path d="M79 62 Q70 58 64 60 L64 156 L78 156 L80 98 Z" fill="${c}"/>`+
+  [44,47,50,53].map(x=>`<path d="M${x} 66 L${x} 154" stroke="${shade(c,-.12)}" stroke-width=".8"/>`).join("")+[67,70,73,76].map(x=>`<path d="M${x} 66 L${x} 154" stroke="${shade(c,-.12)}" stroke-width=".8"/>`).join("")+
+  `<path d="M48 61 L56 74 L56 61Z M72 61 L64 74 L64 61Z" fill="${shade(c,-.15)}"/><rect x="44" y="90" width="9" height="8" fill="${shade(c,-.1)}"/><rect x="67" y="90" width="9" height="8" fill="${shade(c,-.1)}"/>`;}
+function dress(c,kind){
+  if(kind==="column")return `<path d="M42 62 Q60 66 78 62 L80 98 L77 132 L80 236 L40 236 L43 132 L40 98Z" fill="${c}"/><path d="M48 62 Q60 72 72 62" fill="none" stroke="${shade(c,-.2)}" stroke-width="1.4"/><path d="M58 175 L57 236" stroke="${shade(c,-.1)}" stroke-width="1"/>`;
+  return `<path d="M41 62 Q60 56 79 62 L79 98 L74 124 Q92 200 90 244 Q60 252 30 244 Q28 200 46 124 L41 98Z" fill="${c}"/><path d="M46 124 Q60 128 74 124" fill="none" stroke="${shade(c,-.2)}" stroke-width="2"/><path d="M52 132 Q46 190 42 246 M68 132 Q74 190 78 246 M60 130 L60 249" fill="none" stroke="${shade(c,.14)}" stroke-width="1.6" opacity=".7"/><path d="M50 60 Q60 70 70 60" fill="none" stroke="${shade(c,-.25)}" stroke-width="1.4"/>`;}
+function figure(p){
+  let o=hairBack(p);
+  o+=`<rect x="55" y="48" width="10" height="14" fill="${p.skin}"/>`;
+  if(p.layer==="cardigan")o+=`<path d="M40 63 L30 150 L44 172 L46 98Z M80 63 L90 150 L76 172 L74 98Z" fill="${p.cardigan}"/>`;
+  if(p.kind==="dress"){o+=legs(p,"bare");o+=arms(p,p.sleeves?p.top:null,p.sleeveLen);o+=dress(p.top,p.dress);
+    if(p.puff)o+=`<ellipse cx="39" cy="70" rx="9.5" ry="11" fill="${p.top}"/><ellipse cx="81" cy="70" rx="9.5" ry="11" fill="${p.top}"/><path d="M33 76 Q39 82 45 76 M75 76 Q81 82 87 76" fill="none" stroke="${shade(p.top,-.2)}" stroke-width="1.2"/>`;
+    if(p.belt)o+=`<path d="M46 124 Q60 128 74 124" stroke="${p.belt}" stroke-width="3.5" fill="none"/>`;}
+  else{o+=legs(p,p.pants,p.bottom);o+=arms(p,p.sleeve||p.top,p.sleeveLen);
+    if(p.inner)o+=torso(p.inner,154);
+    if(p.over)o+=overshirt(p.over,p.inner);else o+=torso(p.top,p.topLen||152,p.tex);
+    if(p.collar)o+=`<path d="M52 58 L60 64 L68 58 L66 54 L54 54Z" fill="${p.collar}"/>`;}
+  o+=`<ellipse cx="60" cy="36" rx="13" ry="15.5" fill="${p.skin}"/>`;
+  o+=hairFront(p);
+  if(p.jewel)o+=`<path d="M53 62 Q60 70 67 62" fill="none" stroke="${p.jewel}" stroke-width="1.2"/>`;
+  return o;}
+function scaleWrap(inner,s){return `<g transform="translate(${60*(1-s)} ${296*(1-s)}) scale(${s})">${inner}</g>`}
+
+const SK={a:"#f0d3bd",b:"#e9c3a6",c:"#f3dcca",d:"#e4bb98",e:"#dcb08b"};
+const P={
+ geri:{name:"Geri Gannaway",who:"Grandma · 79",kind:"set",hair:"white",hairColor:"#ebe7df",skin:SK.c,top:col("oat"),bottom:col("oat"),pants:"wide",tex:"knit",topLen:160,shoes:"#c9b79b",layer:"cardigan",cardigan:col("camel"),h:.9,jewel:"#c8a96a",
+   look:"Oatmeal knit pant set with a long camel cardigan",dots:["oat","camel"],
+   items:["Matching top and pull-on wide-leg pants in a brushed sweater knit or soft jersey","Elastic waist, a relaxed tunic-length top, nothing tight at the arms","Long camel cardigan for warmth that can come off for some shots","Neutral flat sandals or soft slip-ons, small gold earrings"],
+   why:"The softest neutral in the photo, so she sits naturally in the middle of every grouping."},
+ peter:{name:"Peter Handel",who:"Dad · 50",kind:"sep",hair:"short",hairColor:"#9a7650",skin:SK.b,top:col("camel"),bottom:col("dkdenim"),pants:"jeans",tex:"fluffy",h:1.0,
+   look:"Fluffy camel sweater with dark jeans",dots:["camel","dkdenim"],
+   items:["Brushed mohair-blend or teddy-texture crewneck in camel or caramel","Ecru tee or collar peeking out at the neck is optional","Dark-wash straight jeans, rolled once if barefoot"],
+   why:"Camel is the bridge between Julie’s rust and Grandma’s oatmeal, and a fuzzy texture photographs warmly in soft light."},
+ julie:{name:"Julie Handel",who:"Mom · 46",kind:"dress",dress:"flow",puff:true,sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#6b4a33",skin:SK.a,top:col("rust"),h:.97,
+   look:"Her silky autumn dress with puffed sleeves",dots:["rust"],
+   items:["The dress she already has. It sets the palette for everyone else","Barefoot or thin tan sandals","Small gold jewelry. Skip a necklace if the neckline is busy","A camel or ecru wrap for between shots"],
+   why:"The movement of a silky skirt in sea wind is the shot. Everyone else is chosen to sit next to it."},
+ leo:{name:"Leo Handel",who:"17 · spring coloring",kind:"sep",hair:"medium",hairColor:"#8a6a48",skin:SK.c,top:col("apricot"),inner:null,bottom:col("stone"),pants:"chino",tex:"buttons",sleeveLen:"three",h:1.04,
+   look:"Apricot linen shirt with stone chinos",dots:["apricot","stone"],
+   items:["Soft orange in a clear, warm shade (apricot or melon) in linen or washed cotton","Sleeves rolled to the forearm, untucked or front-tucked","Stone or light-khaki chinos, barefoot"],
+   why:"His favorite orange, in the clear spring version that suits him, and a lighter echo of Julie’s rust across the group."},
+ eden:{name:"Eden Handel",who:"14",kind:"dress",dress:"column",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#a8845a",skin:SK.c,top:col("dusty"),h:.93,
+   look:"Dusty blue column dress with long sleeves",dots:["dusty"],
+   items:["Straight or softly flared midi in dusty or slate blue, no ruffles, no puff","Rib knit, crepe or jersey. Long sleeves keep her warm and keep the lines clean","Simple crew or square neckline, barefoot"],
+   why:"Her blue matches the water and connects her to Amy and Marcus on the other side of the group."},
+ adele:{name:"Adele Handel",who:"12",kind:"sep",hair:"long",hairColor:"#c27a4a",skin:SK.a,top:col("cream"),inner:col("cream"),over:col("mustard"),bottom:col("denim"),pants:"jeans",sleeve:col("mustard"),h:.86,
+   look:"Mustard cord shacket over ecru, with light jeans",dots:["mustard","cream","denim"],
+   items:["Oversized mustard corduroy overshirt worn open, sleeves pushed up","Ecru or oatmeal ribbed tee underneath, no graphics","Mid- or light-wash wide-leg or straight jeans, cuffed"],
+   why:"Jeans and a really cool shirt, as asked. Mustard looks great with her strawberry-blonde hair."},
+ august:{name:"August Handel",who:"11 · favorite color green",kind:"sep",hair:"short",hairColor:"#c0703c",skin:SK.a,top:col("olive"),bottom:col("khaki"),pants:"chino",tex:"henley",h:.8,
+   look:"Olive waffle henley with khaki pants",dots:["olive","khaki"],
+   items:["Long-sleeve waffle-knit henley in olive or moss green","Khaki or tan pull-on chinos or joggers (comfortable for sitting in sand)","Barefoot, sleeves pushed up"],
+   why:"His favorite green in a deep fall shade that suits his red hair."},
+ amy:{name:"Amy Gannaway",who:"49 · spring coloring",kind:"dress",dress:"flow",sleeves:true,sleeveLen:"three",hair:"shoulder",hairColor:"#7a5438",skin:SK.b,top:col("seaglass"),belt:col("camel"),h:.96,
+   look:"Sea-glass midi dress with a camel belt",dots:["seaglass","camel"],
+   items:["Flowy midi dress or blouse-and-skirt in warm sea-glass or soft aqua","3/4 or flutter sleeves, light fabric that moves","Thin camel belt and tan sandals to warm it up"],
+   why:"Clear, warm aqua is a spring color, and it’s also the color of the water behind you."},
+ marcus:{name:"Marcus Buchanan",who:"late 50s · cool tones",kind:"sep",hair:"gray",hairColor:"#a3a19c",skin:SK.e,top:col("navy"),bottom:col("stone"),pants:"chino",tex:"zip",h:1.02,collar:"#9fb4cc",
+   look:"Navy knit quarter-zip over a chambray collar",dots:["navy","stone"],
+   items:["Navy or deep slate merino quarter-zip or crewneck","Light-blue chambray shirt collar showing at the neck","Stone or grey chinos, barefoot or brown leather sandals"],
+   why:"Cool navy flatters olive undertones and gives the group one deep anchor color."},
+ robert:{name:"Robert Buchanan",who:"20s",maybe:true,kind:"sep",hair:"medium",hairColor:"#5e4532",skin:SK.b,top:col("oat"),bottom:col("dkdenim"),pants:"jeans",tex:"cable",h:1.03,
+   look:"Oatmeal fisherman sweater with dark jeans",dots:["oat","dkdenim"],
+   items:["Chunky cable or waffle knit in oatmeal or ecru","Dark-wash jeans","Works with almost any coloring, so easy if he joins last minute"],
+   why:"A neutral that ties him to Grandma and keeps the cousin side of the photo calm."}
+};
+const order=["geri","peter","julie","leo","eden","adele","august","amy","marcus","robert"];
+document.getElementById("people").innerHTML=order.map(k=>{const p=P[k];
+  return `<article class="card"><svg viewBox="0 0 120 300" role="img" aria-label="Outfit mockup for ${p.name}">${scaleWrap(figure(p),p.h)}</svg>
+  <div><h3>${p.name}</h3><p class="who">${p.who}${p.maybe?'<span class="maybe">if joining</span>':''}</p><p class="look">${p.look}</p>
+  <div class="dots">${p.dots.map(d=>`<i style="background:${col(d)}" title="${C[d][0]}"></i>`).join("")}</div></div>
+  <div><ul>${p.items.map(i=>`<li>${i}</li>`).join("")}</ul><p style="font-size:.86rem;margin:8px 0 0"><i>${p.why}</i></p></div></article>`}).join("");
+
+/* group scene */
+const back=[["robert",140],["amy",280],["marcus",420],["peter",560],["julie",700],["leo",840]];
+const front=[["adele",210],["geri",490],["eden",770],["august",930]];
+let g="";
+g+=`<path d="M0 252 Q250 246 500 252 T1000 250 L1000 262 Q750 256 500 262 T0 260Z" fill="#fff" opacity=".35"/>`;
+const place=(k,x,y,s)=>{const p=P[k];const S=s*p.h*1.0;return `<g transform="translate(${x-60*S} ${y-296*S}) scale(${S})">${figure(p)}</g>`};
+back.forEach(([k,x])=>{g+=`<ellipse cx="${x}" cy="338" rx="26" ry="5" fill="#000" opacity=".08"/>`+place(k,x,338,1.0)});
+front.forEach(([k,x])=>{g+=`<ellipse cx="${x}" cy="372" rx="26" ry="5" fill="#000" opacity=".1"/>`+place(k,x,372,1.06)});
+document.getElementById("scene").innerHTML=g;
+</script>
+
+</body>
+</html>
