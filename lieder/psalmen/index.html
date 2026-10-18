@@ -59,11 +59,16 @@
     footer{padding:26px 0 40px;color:var(--muted);font-size:.9rem}
     a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
     @media (max-width:600px){.album{grid-template-columns:minmax(0,1fr)}.album img{width:140px;height:140px}}
+    .back{display:inline-flex;align-items:center;gap:6px;margin:0 0 22px;padding:7px 16px;border:1px solid rgba(255,255,255,.4);border-radius:999px;color:#fff;text-decoration:none;font-weight:600;font-size:.95rem}
+    .back:hover{background:rgba(255,255,255,.12);border-color:#fff}
+    .back-bottom{display:inline-flex;align-items:center;gap:6px;margin:28px 0 6px;padding:11px 20px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600}
+    .back-bottom:hover{background:#1f3a66}
   </style>
 </head>
 <body>
   <section class="hero">
     <div class="wrap">
+      <a class="back" href="../">← Alle Lieder</a>
       <p class="eyebrow">Bibelverse als Lieder · Familie Handel</p>
       <h1>Psalmen</h1>
       <p>„Glücklich ist der Mensch, der nicht dem Vorbild der Frevler folgt.“ Drei Psalmen als Lieder zum Anhören, Mitsingen und Auswendiglernen: Psalm 1, Psalm 8 und Psalm 13. Viel Freude damit!</p>
@@ -106,6 +111,7 @@
       <p>Die Texte sind die Bibelverse selbst, so wie wir sie auswendig gelernt haben. Die Musik haben wir mit Hilfe von KI (Suno) erstellt. Die Lieder dürfen gerne kostenlos angehört, heruntergeladen und weitergegeben werden – zum Auswendiglernen, in der Familie, im Hauskreis oder in der Gemeinde.</p>
       <p>Die Dateien sind im Format AAC (.m4a) und spielen auf iPhone, Android, Mac und Windows.</p>
     </section>
+    <a class="back-bottom" href="../">← Zurück zu allen Liedern</a>
   </main>
 
   <footer class="wrap">
