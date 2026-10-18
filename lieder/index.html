@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bibelverse als Lieder – Familie Handel</title>
-  <meta name="description" content="Deutsche Bibelverse als Lieder zum Anhören und kostenlosen Herunterladen: 1. Mose 2, Psalm 1, Psalm 8, Psalm 13 und 1. Johannes 1, dazu 1. Petrus 1–5 auf Englisch. Zum Auswendiglernen und Mitsingen.">
+  <title>Scripture Songs – The Handel Family</title>
+  <meta name="description" content="Scripture memory songs from the Handel family to stream and download for free: all of 1 Peter in English (KJV), plus German songs from Genesis 2, Psalms 1, 8 and 13, and 1 John 1.">
   <link rel="canonical" href="https://handel.net/lieder/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bibelverse als Lieder">
-  <meta property="og:description" content="Deutsche Bibelverse als Lieder zum Anhören, Mitsingen und Herunterladen.">
+  <meta property="og:title" content="Scripture Songs – The Handel Family">
+  <meta property="og:description" content="Scripture memory songs in English and German to stream, sing along with and download.">
   <meta property="og:url" content="https://handel.net/lieder/">
   <meta property="og:image" content="https://handel.net/lieder/cover/ps1.jpg">
-  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
   <link rel="icon" type="image/png" href="../images/emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,142 +57,171 @@
     footer{padding:26px 0 40px;color:var(--muted);font-size:.9rem}
     a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
     @media (max-width:600px){.album{grid-template-columns:minmax(0,1fr)}.album img{width:140px;height:140px}}
+    .album{scroll-margin-top:70px}
+    .album[hidden]{display:none}
+    .lang{display:inline-block;vertical-align:4px;margin-left:6px;font:600 .68rem/1 var(--sans);letter-spacing:.08em;padding:3px 7px;border-radius:999px;border:1px solid var(--gold);color:var(--gold)}
+    .filter{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+    .fg{display:inline-flex;gap:4px;align-items:center}
+    .filter button{font:600 .9rem var(--sans);color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+    .filter button.ch{padding:6px 10px;min-width:34px;font-weight:400}
+    .filter button i{font-style:normal;font-weight:400;color:var(--muted)}
+    .filter button:hover{border-color:var(--gold)}
+    .filter button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+    .filter button[aria-pressed="true"] i{color:#dfe5ef}
+    .filter button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    @media (max-width:600px){.filter{position:static;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:12px 20px}.fg{flex:none}.filter>button{flex:none}}
   </style>
 </head>
 <body>
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Familie Handel · San José, Kalifornien</p>
-      <h1>Bibelverse als Lieder</h1>
-      <p>Als Familie lernen wir Bibeltexte auswendig – und gesungene Worte bleiben einfach besser im Gedächtnis. Deshalb haben wir einige Abschnitte vertont. Hier sind unsere Lieder – die meisten auf Deutsch, 1. Petrus auf Englisch – zum Anhören, Mitsingen und kostenlosen Herunterladen. Viel Freude damit!</p>
-      <p class="en">Scripture memory songs from the Handel family, in German, plus all of 1 Peter in English (KJV). Free to stream and download.</p>
-      <a class="all" href="alle-lieder.zip" download>⬇ Alle Lieder herunterladen <small>(ZIP · 31 Lieder · 39 MB)</small></a>
+      <p class="eyebrow">The Handel Family · San Jose, California</p>
+      <h1>Scripture Songs</h1>
+      <p>As a family we memorize Scripture together, and sung words simply stick better. So we set passages to music. Here are our songs, all of 1 Peter in English (King James Version) and several passages in German, free to stream, sing along with and download. Enjoy!</p>
+      <p class="en" lang="de">Bibelverse als Lieder: Unsere deutschen Lieder zu 1. Mose 2, Psalm 1, 8 und 13 und 1. Johannes 1 – kostenlos zum Anhören, Mitsingen und Herunterladen.</p>
+      <a class="all" href="alle-lieder.zip" download>⬇ Download all songs <small>(ZIP · 31 songs · 39 MB)</small></a>
     </div>
   </section>
 
   <main class="wrap">
-    <section class="album" aria-labelledby="a-gen">
+    <nav class="filter" aria-label="Browse by book and chapter">
+      <button type="button" data-f="all" aria-pressed="true">All</button><span class="fg"><button type="button" data-f="genesis">Genesis <i lang="de">1. Mose</i></button><button type="button" class="ch" data-f="genesis-2" aria-label="Genesis 2">2</button></span><span class="fg"><button type="button" data-f="psalms">Psalms <i lang="de">Psalmen</i></button><button type="button" class="ch" data-f="psalms-1" aria-label="Psalms 1">1</button><button type="button" class="ch" data-f="psalms-8" aria-label="Psalms 8">8</button><button type="button" class="ch" data-f="psalms-13" aria-label="Psalms 13">13</button></span><span class="fg"><button type="button" data-f="1-peter">1 Peter</button><button type="button" class="ch" data-f="1-peter-1" aria-label="1 Peter 1">1</button><button type="button" class="ch" data-f="1-peter-2" aria-label="1 Peter 2">2</button><button type="button" class="ch" data-f="1-peter-3" aria-label="1 Peter 3">3</button><button type="button" class="ch" data-f="1-peter-4" aria-label="1 Peter 4">4</button><button type="button" class="ch" data-f="1-peter-5" aria-label="1 Peter 5">5</button></span><span class="fg"><button type="button" data-f="1-john">1 John <i lang="de">1. Johannes</i></button><button type="button" class="ch" data-f="1-john-1" aria-label="1 John 1">1</button></span>
+    </nav>
+    <section class="album" lang="de" data-book="genesis" data-ch="2" id="genesis-2" aria-labelledby="a-gen">
       <img src="cover/1mose2.jpg" alt="Cover: 1. Mose 2" width="180" height="180" loading="lazy">
       <div>
-        <h2 id="a-gen">1. Mose 2</h2>
+        <h2 id="a-gen">1. Mose 2 <span class="lang" title="Deutsch">DE</span></h2>
         <p class="meta">Der Mensch im Garten Eden · 2 Lieder</p>
         <div class="track"><div><div class="tt">1. Mose 2,15–19</div><div class="ts">Deutschpop · 1:08</div></div><a class="dl" href="audio/1-mose-2-15-19.m4a" download="1. Mose 2,15-19.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-mose-2-15-19.m4a"></audio></div>
         <div class="track"><div><div class="tt">1. Mose 2,20–25</div><div class="ts">Schlager · 1:49</div></div><a class="dl" href="audio/1-mose-2-20-25.m4a" download="1. Mose 2,20-25.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-mose-2-20-25.m4a"></audio></div>
       </div>
     </section>
-
-    <section class="album" aria-labelledby="a-ps1">
+    <section class="album" lang="de" data-book="psalms" data-ch="1" id="psalms-1" aria-labelledby="a-ps1">
       <img src="cover/ps1.jpg" alt="Cover: Psalm 1" width="180" height="180" loading="lazy">
       <div>
-        <h2 id="a-ps1">Psalm 1</h2>
+        <h2 id="a-ps1">Psalm 1 <span class="lang" title="Deutsch">DE</span></h2>
         <p class="meta">Die Freude an Gottes Wort · 1 Lied · <a href="psalmen/">Alle Psalmen</a></p>
         <div class="track"><div><div class="tt">Psalm 1,1–6</div><div class="ts">Indie-Pop · 1:20</div></div><a class="dl" href="audio/psalm-1-1-6.m4a" download="Psalm 1,1-6.m4a">Herunterladen</a><audio controls preload="none" src="audio/psalm-1-1-6.m4a"></audio></div>
       </div>
     </section>
-
-    <section class="album" aria-labelledby="a-ps8">
+    <section class="album" lang="de" data-book="psalms" data-ch="8" id="psalms-8" aria-labelledby="a-ps8">
       <img src="cover/ps8.jpg" alt="Cover: Psalm 8" width="180" height="180" loading="lazy">
       <div>
-        <h2 id="a-ps8">Psalm 8</h2>
+        <h2 id="a-ps8">Psalm 8 <span class="lang" title="Deutsch">DE</span></h2>
         <p class="meta">Die Würde des Menschen · 1 Lied · <a href="psalmen/">Alle Psalmen</a></p>
         <div class="track"><div><div class="tt">Psalm 8,2–10</div><div class="ts">Rock · 2:13</div></div><a class="dl" href="audio/psalm-8-2-10.m4a" download="Psalm 8,2-10.m4a">Herunterladen</a><audio controls preload="none" src="audio/psalm-8-2-10.m4a"></audio></div>
       </div>
     </section>
-
-    <section class="album" aria-labelledby="a-ps13">
+    <section class="album" lang="de" data-book="psalms" data-ch="13" id="psalms-13" aria-labelledby="a-ps13">
       <img src="cover/ps13.jpg" alt="Cover: Psalm 13" width="180" height="180" loading="lazy">
       <div>
-        <h2 id="a-ps13">Psalm 13</h2>
+        <h2 id="a-ps13">Psalm 13 <span class="lang" title="Deutsch">DE</span></h2>
         <p class="meta">Wie lange noch? · 1 Lied · <a href="psalmen/">Alle Psalmen</a></p>
         <div class="track"><div><div class="tt">Psalm 13,2–6</div><div class="ts">Alternative Rock · 1:46</div></div><a class="dl" href="audio/psalm-13-2-6.m4a" download="Psalm 13,2-6.m4a">Herunterladen</a><audio controls preload="none" src="audio/psalm-13-2-6.m4a"></audio></div>
       </div>
     </section>
-
-    <section class="album" aria-labelledby="a-joh">
+    <section class="album" lang="en" data-book="1-peter" data-ch="1" id="1-peter-1" aria-labelledby="a-1pet1">
+      <img src="cover/1pet1.jpg" alt="Cover: 1 Peter 1" width="180" height="180" loading="lazy">
+      <div>
+        <h2 id="a-1pet1">1 Peter 1 <span class="lang" title="English">EN</span></h2>
+        <p class="meta">A Living Hope · 6 songs · KJV · <a href="1-petrus/">1 Peter page</a></p>
+        <div class="track"><div><div class="tt">1 Peter 1:1–5</div><div class="ts">Pop · 1:10</div></div><a class="dl" href="audio/1-petrus-1-1-5.m4a" download="1 Peter 1_1-5.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-1-5.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 1:6–9</div><div class="ts">Mariachi Pop · 1:30</div></div><a class="dl" href="audio/1-petrus-1-6-9.m4a" download="1 Peter 1_6-9.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-6-9.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 1:10–12</div><div class="ts">K-Pop · 0:59</div></div><a class="dl" href="audio/1-petrus-1-10-12.m4a" download="1 Peter 1_10-12.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-10-12.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 1:13–16</div><div class="ts">Pop · 0:57</div></div><a class="dl" href="audio/1-petrus-1-13-16.m4a" download="1 Peter 1_13-16.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-13-16.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 1:17–21</div><div class="ts">Oompah Pop · 1:59</div></div><a class="dl" href="audio/1-petrus-1-17-21.m4a" download="1 Peter 1_17-21.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-17-21.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 1:22–25</div><div class="ts">Folk Pop · 1:59</div></div><a class="dl" href="audio/1-petrus-1-22-25.m4a" download="1 Peter 1_22-25.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-1-22-25.m4a"></audio></div>
+      </div>
+    </section>
+    <section class="album" lang="en" data-book="1-peter" data-ch="2" id="1-peter-2" aria-labelledby="a-1pet2">
+      <img src="cover/1pet2.jpg" alt="Cover: 1 Peter 2" width="180" height="180" loading="lazy">
+      <div>
+        <h2 id="a-1pet2">1 Peter 2 <span class="lang" title="English">EN</span></h2>
+        <p class="meta">Living Stones · 5 songs · KJV · <a href="1-petrus/">1 Peter page</a></p>
+        <div class="track"><div><div class="tt">1 Peter 2:1–5</div><div class="ts">K-Pop · 0:54</div></div><a class="dl" href="audio/1-petrus-2-1-5.m4a" download="1 Peter 2_1-5.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-2-1-5.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 2:6–10</div><div class="ts">Indie Dance · 2:21</div></div><a class="dl" href="audio/1-petrus-2-6-10.m4a" download="1 Peter 2_6-10.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-2-6-10.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 2:11–15</div><div class="ts">Soca · 0:58</div></div><a class="dl" href="audio/1-petrus-2-11-15.m4a" download="1 Peter 2_11-15.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-2-11-15.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 2:16–20</div><div class="ts">Synth Rock · 1:03</div></div><a class="dl" href="audio/1-petrus-2-16-20.m4a" download="1 Peter 2_16-20.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-2-16-20.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 2:21–25</div><div class="ts">Acoustic Worship · 0:47</div></div><a class="dl" href="audio/1-petrus-2-21-25.m4a" download="1 Peter 2_21-25.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-2-21-25.m4a"></audio></div>
+      </div>
+    </section>
+    <section class="album" lang="en" data-book="1-peter" data-ch="3" id="1-peter-3" aria-labelledby="a-1pet3">
+      <img src="cover/1pet3.jpg" alt="Cover: 1 Peter 3" width="180" height="180" loading="lazy">
+      <div>
+        <h2 id="a-1pet3">1 Peter 3 <span class="lang" title="English">EN</span></h2>
+        <p class="meta">Render Blessing · 5 songs · KJV · <a href="1-petrus/">1 Peter page</a></p>
+        <div class="track"><div><div class="tt">1 Peter 3:1–4</div><div class="ts">Bluegrass Gospel · 1:01</div></div><a class="dl" href="audio/1-petrus-3-1-4.m4a" download="1 Peter 3_1-4.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-3-1-4.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 3:5–7</div><div class="ts">Doo-Wop · 1:16</div></div><a class="dl" href="audio/1-petrus-3-5-7.m4a" download="1 Peter 3_5-7.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-3-5-7.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 3:8–11</div><div class="ts">Eurodance · 1:08</div></div><a class="dl" href="audio/1-petrus-3-8-11.m4a" download="1 Peter 3_8-11.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-3-8-11.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 3:12–18</div><div class="ts">Folk Rock · 2:34</div></div><a class="dl" href="audio/1-petrus-3-12-18.m4a" download="1 Peter 3_12-18.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-3-12-18.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 3:19–22</div><div class="ts">Indie Pop · 1:05</div></div><a class="dl" href="audio/1-petrus-3-19-22.m4a" download="1 Peter 3_19-22.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-3-19-22.m4a"></audio></div>
+      </div>
+    </section>
+    <section class="album" lang="en" data-book="1-peter" data-ch="4" id="1-peter-4" aria-labelledby="a-1pet4">
+      <img src="cover/1pet4.jpg" alt="Cover: 1 Peter 4" width="180" height="180" loading="lazy">
+      <div>
+        <h2 id="a-1pet4">1 Peter 4 <span class="lang" title="English">EN</span></h2>
+        <p class="meta">Minister One to Another · 4 songs · KJV · <a href="1-petrus/">1 Peter page</a></p>
+        <div class="track"><div><div class="tt">1 Peter 4:1–6</div><div class="ts">Arabic Rock · 1:34</div></div><a class="dl" href="audio/1-petrus-4-1-6.m4a" download="1 Peter 4_1-6.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-4-1-6.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 4:7–11</div><div class="ts">Gospel · 0:57</div></div><a class="dl" href="audio/1-petrus-4-7-11.m4a" download="1 Peter 4_7-11.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-4-7-11.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 4:12–16</div><div class="ts">Latin Trap · 1:02</div></div><a class="dl" href="audio/1-petrus-4-12-16.m4a" download="1 Peter 4_12-16.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-4-12-16.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 4:17–19</div><div class="ts">Ambient Pop · 1:04</div></div><a class="dl" href="audio/1-petrus-4-17-19.m4a" download="1 Peter 4_17-19.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-4-17-19.m4a"></audio></div>
+      </div>
+    </section>
+    <section class="album" lang="en" data-book="1-peter" data-ch="5" id="1-peter-5" aria-labelledby="a-1pet5">
+      <img src="cover/1pet5.jpg" alt="Cover: 1 Peter 5" width="180" height="180" loading="lazy">
+      <div>
+        <h2 id="a-1pet5">1 Peter 5 <span class="lang" title="English">EN</span></h2>
+        <p class="meta">Cast Your Care on Him · 3 songs · KJV · <a href="1-petrus/">1 Peter page</a></p>
+        <div class="track"><div><div class="tt">1 Peter 5:1–4</div><div class="ts">Upbeat Gospel · 0:50</div></div><a class="dl" href="audio/1-petrus-5-1-4.m4a" download="1 Peter 5_1-4.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-5-1-4.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 5:5–9</div><div class="ts">Afro-Fusion · 0:57</div></div><a class="dl" href="audio/1-petrus-5-5-9.m4a" download="1 Peter 5_5-9.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-5-5-9.m4a"></audio></div>
+        <div class="track"><div><div class="tt">1 Peter 5:10–14</div><div class="ts">Contemporary Gospel · 1:18</div></div><a class="dl" href="audio/1-petrus-5-10-14.m4a" download="1 Peter 5_10-14.m4a">Download</a><audio controls preload="none" src="audio/1-petrus-5-10-14.m4a"></audio></div>
+      </div>
+    </section>
+    <section class="album" lang="de" data-book="1-john" data-ch="1" id="1-john-1" aria-labelledby="a-joh">
       <img src="cover/1joh1.jpg" alt="Cover: 1. Johannes 1" width="180" height="180" loading="lazy">
       <div>
-        <h2 id="a-joh">1. Johannes 1</h2>
+        <h2 id="a-joh">1. Johannes 1 <span class="lang" title="Deutsch">DE</span></h2>
         <p class="meta">Gott ist Licht · 3 Lieder · <a href="1-johannes/">Eigene Seite</a></p>
         <div class="track"><div><div class="tt">1. Johannes 1,1–4</div><div class="ts">Liedermacher · 0:58</div></div><a class="dl" href="audio/1-johannes-1-1-4.m4a" download="1. Johannes 1,1-4.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-johannes-1-1-4.m4a"></audio></div>
         <div class="track"><div><div class="tt">1. Johannes 1,5–7</div><div class="ts">Europop · 0:51</div></div><a class="dl" href="audio/1-johannes-1-5-7.m4a" download="1. Johannes 1,5-7.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-johannes-1-5-7.m4a"></audio></div>
         <div class="track"><div><div class="tt">1. Johannes 1,8–2,2</div><div class="ts">Indie-Rock · 1:43</div></div><a class="dl" href="audio/1-johannes-1-8-2-2.m4a" download="1. Johannes 1,8-2,2.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-johannes-1-8-2-2.m4a"></audio></div>
       </div>
     </section>
-
-    <section class="album" aria-labelledby="a-1pet1">
-      <img src="cover/1pet1.jpg" alt="Cover: 1. Petrus 1" width="180" height="180" loading="lazy">
-      <div>
-        <h2 id="a-1pet1">1. Petrus 1</h2>
-        <p class="meta">Eine lebendige Hoffnung · 6 Lieder · auf Englisch · <a href="1-petrus/">Eigene Seite</a></p>
-        <div class="track"><div><div class="tt">1. Petrus 1,1–5</div><div class="ts">Pop · 1:10</div></div><a class="dl" href="audio/1-petrus-1-1-5.m4a" download="1. Petrus 1,1-5.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-1-5.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 1,6–9</div><div class="ts">Mariachi-Pop · 1:30</div></div><a class="dl" href="audio/1-petrus-1-6-9.m4a" download="1. Petrus 1,6-9.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-6-9.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 1,10–12</div><div class="ts">K-Pop · 0:59</div></div><a class="dl" href="audio/1-petrus-1-10-12.m4a" download="1. Petrus 1,10-12.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-10-12.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 1,13–16</div><div class="ts">Pop · 0:57</div></div><a class="dl" href="audio/1-petrus-1-13-16.m4a" download="1. Petrus 1,13-16.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-13-16.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 1,17–21</div><div class="ts">Blasmusik-Pop · 1:59</div></div><a class="dl" href="audio/1-petrus-1-17-21.m4a" download="1. Petrus 1,17-21.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-17-21.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 1,22–25</div><div class="ts">Folk-Pop · 1:59</div></div><a class="dl" href="audio/1-petrus-1-22-25.m4a" download="1. Petrus 1,22-25.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-1-22-25.m4a"></audio></div>
-      </div>
-    </section>
-    <section class="album" aria-labelledby="a-1pet2">
-      <img src="cover/1pet2.jpg" alt="Cover: 1. Petrus 2" width="180" height="180" loading="lazy">
-      <div>
-        <h2 id="a-1pet2">1. Petrus 2</h2>
-        <p class="meta">Lebendige Steine · 5 Lieder · auf Englisch · <a href="1-petrus/">Eigene Seite</a></p>
-        <div class="track"><div><div class="tt">1. Petrus 2,1–5</div><div class="ts">K-Pop · 0:54</div></div><a class="dl" href="audio/1-petrus-2-1-5.m4a" download="1. Petrus 2,1-5.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-2-1-5.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 2,6–10</div><div class="ts">Indie-Dance · 2:21</div></div><a class="dl" href="audio/1-petrus-2-6-10.m4a" download="1. Petrus 2,6-10.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-2-6-10.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 2,11–15</div><div class="ts">Soca · 0:58</div></div><a class="dl" href="audio/1-petrus-2-11-15.m4a" download="1. Petrus 2,11-15.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-2-11-15.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 2,16–20</div><div class="ts">Synthrock · 1:03</div></div><a class="dl" href="audio/1-petrus-2-16-20.m4a" download="1. Petrus 2,16-20.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-2-16-20.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 2,21–25</div><div class="ts">Akustischer Lobpreis · 0:47</div></div><a class="dl" href="audio/1-petrus-2-21-25.m4a" download="1. Petrus 2,21-25.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-2-21-25.m4a"></audio></div>
-      </div>
-    </section>
-    <section class="album" aria-labelledby="a-1pet3">
-      <img src="cover/1pet3.jpg" alt="Cover: 1. Petrus 3" width="180" height="180" loading="lazy">
-      <div>
-        <h2 id="a-1pet3">1. Petrus 3</h2>
-        <p class="meta">Segnen statt vergelten · 5 Lieder · auf Englisch · <a href="1-petrus/">Eigene Seite</a></p>
-        <div class="track"><div><div class="tt">1. Petrus 3,1–4</div><div class="ts">Bluegrass-Gospel · 1:01</div></div><a class="dl" href="audio/1-petrus-3-1-4.m4a" download="1. Petrus 3,1-4.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-3-1-4.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 3,5–7</div><div class="ts">Doo-Wop · 1:16</div></div><a class="dl" href="audio/1-petrus-3-5-7.m4a" download="1. Petrus 3,5-7.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-3-5-7.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 3,8–11</div><div class="ts">Eurodance · 1:08</div></div><a class="dl" href="audio/1-petrus-3-8-11.m4a" download="1. Petrus 3,8-11.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-3-8-11.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 3,12–18</div><div class="ts">Folk-Rock · 2:34</div></div><a class="dl" href="audio/1-petrus-3-12-18.m4a" download="1. Petrus 3,12-18.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-3-12-18.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 3,19–22</div><div class="ts">Indie-Pop · 1:05</div></div><a class="dl" href="audio/1-petrus-3-19-22.m4a" download="1. Petrus 3,19-22.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-3-19-22.m4a"></audio></div>
-      </div>
-    </section>
-    <section class="album" aria-labelledby="a-1pet4">
-      <img src="cover/1pet4.jpg" alt="Cover: 1. Petrus 4" width="180" height="180" loading="lazy">
-      <div>
-        <h2 id="a-1pet4">1. Petrus 4</h2>
-        <p class="meta">Dient einander · 4 Lieder · auf Englisch · <a href="1-petrus/">Eigene Seite</a></p>
-        <div class="track"><div><div class="tt">1. Petrus 4,1–6</div><div class="ts">Arabischer Rock · 1:34</div></div><a class="dl" href="audio/1-petrus-4-1-6.m4a" download="1. Petrus 4,1-6.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-4-1-6.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 4,7–11</div><div class="ts">Gospel · 0:57</div></div><a class="dl" href="audio/1-petrus-4-7-11.m4a" download="1. Petrus 4,7-11.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-4-7-11.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 4,12–16</div><div class="ts">Latin Trap · 1:02</div></div><a class="dl" href="audio/1-petrus-4-12-16.m4a" download="1. Petrus 4,12-16.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-4-12-16.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 4,17–19</div><div class="ts">Ambient-Pop · 1:04</div></div><a class="dl" href="audio/1-petrus-4-17-19.m4a" download="1. Petrus 4,17-19.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-4-17-19.m4a"></audio></div>
-      </div>
-    </section>
-    <section class="album" aria-labelledby="a-1pet5">
-      <img src="cover/1pet5.jpg" alt="Cover: 1. Petrus 5" width="180" height="180" loading="lazy">
-      <div>
-        <h2 id="a-1pet5">1. Petrus 5</h2>
-        <p class="meta">Werft eure Sorge auf ihn · 3 Lieder · auf Englisch · <a href="1-petrus/">Eigene Seite</a></p>
-        <div class="track"><div><div class="tt">1. Petrus 5,1–4</div><div class="ts">Gospel · 0:50</div></div><a class="dl" href="audio/1-petrus-5-1-4.m4a" download="1. Petrus 5,1-4.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-5-1-4.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 5,5–9</div><div class="ts">Afro-Fusion · 0:57</div></div><a class="dl" href="audio/1-petrus-5-5-9.m4a" download="1. Petrus 5,5-9.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-5-5-9.m4a"></audio></div>
-        <div class="track"><div><div class="tt">1. Petrus 5,10–14</div><div class="ts">Gospel · 1:18</div></div><a class="dl" href="audio/1-petrus-5-10-14.m4a" download="1. Petrus 5,10-14.m4a">Herunterladen</a><audio controls preload="none" src="audio/1-petrus-5-10-14.m4a"></audio></div>
-      </div>
-    </section>
     <section class="about">
-      <h3>Über diese Lieder</h3>
-      <p>Die Texte sind die Bibelverse selbst, so wie wir sie auswendig gelernt haben. Die Musik haben wir mit Hilfe von KI (Suno) erstellt. Die Lieder dürfen gerne kostenlos angehört, heruntergeladen und weitergegeben werden – zum Auswendiglernen, in der Familie, im Hauskreis oder in der Gemeinde.</p>
-      <p>Die Dateien sind im Format AAC (.m4a) und spielen auf iPhone, Android, Mac und Windows.</p>
+      <h3>About these songs</h3>
+      <p>The lyrics are the Bible verses themselves, just as we memorized them: the King James Version for 1 Peter, and German translations for the German songs. We made the music with the help of AI (Suno). You're welcome to listen to, download and share these songs for free – for memorizing Scripture at home, in a small group or at church.</p>
+      <p lang="de">Die Lieder dürfen gerne kostenlos angehört, heruntergeladen und weitergegeben werden – zum Auswendiglernen, in der Familie, im Hauskreis oder in der Gemeinde.</p>
+      <p>The files are AAC (.m4a) and play on iPhone, Android, Mac and Windows.</p>
     </section>
   </main>
 
   <footer class="wrap">
-    <a href="../">handel.net</a> · Familie Handel
+    <a href="../">handel.net</a> · The Handel Family
   </footer>
 
   <script>
-    // Nur ein Lied gleichzeitig abspielen
+    // Play only one song at a time
     document.addEventListener('play', function(e){
       document.querySelectorAll('audio').forEach(function(a){ if(a !== e.target) a.pause(); });
     }, true);
+    // Book / chapter filter
+    (function(){
+      var btns=[].slice.call(document.querySelectorAll('.filter button'));
+      var albums=[].slice.call(document.querySelectorAll('.album'));
+      function apply(f, scroll){
+        if(!btns.some(function(b){return b.dataset.f===f})) f='all';
+        albums.forEach(function(a){
+          var show = f==='all' || f===a.dataset.book || f===a.dataset.book+'-'+a.dataset.ch;
+          a.hidden=!show;
+        });
+        btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.f===f ? 'true':'false'); });
+        if(history.replaceState) history.replaceState(null,'', f==='all' ? location.pathname : '#'+f);
+        if(scroll){ var n=document.querySelector('.filter'); window.scrollTo({top:n.getBoundingClientRect().top+window.scrollY-4, behavior:'smooth'}); }
+      }
+      btns.forEach(function(b){ b.addEventListener('click', function(){ document.querySelectorAll('audio').forEach(function(a){a.pause()}); apply(b.dataset.f, true); }); });
+      if(location.hash) apply(decodeURIComponent(location.hash.slice(1)), false);
+    })();
   </script>
 </body>
 </html>
