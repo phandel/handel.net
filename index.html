@@ -50,7 +50,7 @@
     .two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 
     /* stats */
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 40px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:8px 0 40px}
     .stat{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 18px;text-align:center}
     .stat b{display:block;font:600 2.4rem/1 var(--serif);color:var(--gold)}
     .stat span{display:block;margin-top:8px;font-size:.92rem;color:var(--muted);line-height:1.35}
@@ -79,6 +79,13 @@
     .scale{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
     .scale span{background:var(--gold-soft);color:var(--navy);border-radius:6px;padding:4px 10px;font-weight:600;font-size:.95rem}
     .note{font-size:.92rem;color:var(--muted)}
+    table.req th,table.req td{text-align:left}
+    table.req tbody tr:last-child td{font-weight:400}
+    table.req td:nth-child(2){white-space:nowrap}
+    .tests{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:10px}
+    .tests li{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:.98rem}
+    .tests strong{color:var(--navy)}
+    .partners-note{font-size:.95rem;color:var(--muted);margin:-2px 0 14px}
 
     /* contact form */
     .contact{display:grid;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px}
@@ -101,7 +108,7 @@
 
     @media (max-width:820px){
       .two{grid-template-columns:1fr;gap:8px}
-      .stats{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:1fr}
       .partners{grid-template-columns:1fr 1fr}
       .gallery{grid-template-columns:1fr 1fr}
       .gallery figure,.gallery figure.wide{grid-column:span 1}
@@ -128,7 +135,7 @@
       #global,#profile{break-before:page}
       footer{padding:18px 0;break-inside:avoid}
       .two{grid-template-columns:1fr 1fr;gap:32px}
-      .stats{grid-template-columns:repeat(4,1fr)}
+      .stats{grid-template-columns:repeat(3,1fr)}
       .partners{grid-template-columns:repeat(3,1fr)}
       .gallery{grid-template-columns:repeat(6,1fr);gap:8px}
       .gallery figure{grid-column:span 2}
@@ -180,7 +187,7 @@
       <p>Principal Julie Handel, a former small-business consultant who was herself homeschooled, oversees curriculum and academic counseling; Peter Handel, a veteran Apple engineer, oversees STEM programming. Our high school program operates under the auspices of The King’s Academy PSP, a registered California private school satellite program (Cal. Ed. Code § 33190).</p>
     </div>
     <div>
-      <h2>Our Values</h2>
+      <h2>Homeschool Values</h2>
       <div class="rule"></div>
       <p>Our Christian faith shapes our goal: <strong>to educate globally minded citizens who serve their communities at home and abroad.</strong></p>
       <p>Instruction from accomplished community members in intergenerational environments includes teaching opportunities for the students with peers and younger community members, allowing for richer learning. We intentionally cultivate relationships and skill-building for the good of the community and the ultimate glory of our Creator.</p>
@@ -195,20 +202,9 @@
     <div class="stats">
       <div class="stat"><b>12</b><span>countries across Europe, Asia &amp; Latin America</span></div>
       <div class="stat"><b>77</b><span>days per year, on average, away from California (2023–2026)</span></div>
-      <div class="stat"><b>83%</b><span>of lodging in local homes or dormitories</span></div>
-      <div class="stat"><b>3</b><span>languages of instruction: English, German &amp; Spanish</span></div>
+            <div class="stat"><b>3</b><span>languages of instruction: English, German &amp; Spanish</span></div>
     </div>
-    <div class="two">
-      <div>
-        <p>Leo has traveled extensively and studied abroad, averaging 77 days away from California per year. He traveled to debate tournaments in Virginia and Tennessee and took part in a 9-week rescue response training in Texas. Abroad, he attended a residential equestrian camp in Spain, 4.5 weeks of classes at Georg Büchner Gymnasium, a university-track high school in Germany, and service trips in Peru and Mexico. Travel included 12 countries across Europe, Asia, and Latin America, generally lodging in local homes or dormitories to promote cultural exchange.</p>
-        <p>Because of our homeschooling schedule, we have been able to travel extensively for longer periods, exposing our children to scholastic, ecclesiastical, cultural, and historical experiences that have enriched their understanding of our global community. Immersive language weeks, attending a public German university-track high school for multiple months, participating in a horse camp in Spain, working with orphans in Mexico, and with special-needs children in Peru have deepened their understanding of cultural strengths and differences.</p>
-        <p>Their experiences in Italy, Switzerland, and Japan have shown them how much a shared language matters in a given situation, while also showing them how much they can appreciate cultural differences without that same depth of understanding.</p>
-      </div>
-      <div>
-        <p>While at home, we surround them as much as possible with native German and Spanish speakers. Their father’s daily conversations are enriched by extended family visiting for months at a time; cousins, grandparents, weekly tutors, church members, au pairs, and international students have all blessed our children with their unique perspectives and regional language insights.</p>
-        <p>Serving our community in Silicon Valley’s rich cultural landscape has exposed them to many, if not all, Spanish-speaking countries around the world. Time at Sacred Heart Food Bank handing out food bags, or trips with our church to pass out food in underserved neighborhoods, led to many Spanish conversations, sometimes with our children serving as translators. Outings to the local taqueria started with our children explaining how they could speak Spanish without an English accent, and why they said some words as if they were Mexican and others as if they were from Spain.</p>
-      </div>
-    </div>
+    <p style="max-width:860px">Leo has traveled extensively and studied abroad, averaging 77 days away from California per year. He traveled to debate tournaments in Virginia and Tennessee, and participated in a 9-week rescue response training in Texas. Abroad, he attended a residential equestrian camp in Spain, took 4.5 weeks of classes at Georg Büchner Gymnasium, a university-track high school in Germany, and completed service trips in Peru and Mexico. Travel included 12 countries across Europe, Asia, and Latin America, generally lodging in local homes or dormitories to promote cultural exchange.</p>
     <div class="gallery">
       <figure class="wide"><img src="images/peru-machu-picchu.jpg" alt="Our family on the terraces above Machu Picchu"><figcaption>Machu Picchu, Peru</figcaption></figure>
       <figure><img src="images/peru-snorkel.jpg" alt="A student snorkeling beside a sea turtle"><figcaption>Snorkeling with sea turtles</figcaption></figure>
@@ -230,9 +226,8 @@
     <div class="two">
       <div>
         <h3>Programs</h3>
-        <p>Generally, core courses are in English and enrichment programs are in immersive German and Spanish. High school classes are taken at Live Oak Academy, community colleges, and Alert International Academy. Private tutors provide coaching and content in Spanish and German.</p>
-        <p>Local program participation includes LOA Robotics Club, where students have won UC Berkeley’s Pioneers in Engineering robotics contest three years and counting. Leo has competed locally and nationally in STOA speech and debate and performed a lead role in a one-act play through LOA Drama Club.</p>
-        <p>Beyond a love of spoken language, our family loves the language of the universe: math. Homeschooling lets each student progress at their own pace, choosing between co-op classes led by doctorate-holding moms or passionate subject experts at our local homeschool support program, AoPS online courses, and community college classes. This community has enabled our students to study chemistry and physics at advanced levels and apply those passions in robotics.</p>
+        <p>Generally, core courses are in English and enrichment programs are in immersive German and Spanish. High school classes are taken at Live Oak Academy, Community Colleges, and Alert International Academy. Private tutors provide coaching and content in Spanish and German.</p>
+        <p>Local program participation includes LOA Robotics Club, where students have won Cal Berkeley’s PiE robotics contest for 3 years and counting. Leo has competed locally and nationally in STOA speech and debate and performed a lead role in a one-act play through LOA Drama Club.</p>
       </div>
       <div>
         <h3>Curriculum</h3>
@@ -241,12 +236,11 @@
       </div>
     </div>
     <h3>Educational Partners</h3>
+    <p class="partners-note">Specific courses taken are noted in the course description document.</p>
     <ul class="partners">
-      <li><strong>Live Oak Academy</strong><a href="https://liveoakacademy.org">liveoakacademy.org</a><p>A hybrid program meeting three full days a week, with at-home work for the remaining two. All courses are college-preparatory and pedagogically deep. Class sizes range from 8 to 15, and classwork includes projects, labs, presentations, reading, discussion, group projects, and exams.</p></li>
-      <li><strong>Foothill College</strong><a href="https://foothill.edu">foothill.edu</a><p>WASC-accredited community college.</p></li>
-      <li><strong>De Anza College</strong><a href="https://deanza.edu">deanza.edu</a><p>WASC-accredited community college.</p></li>
-      <li><strong>West Valley College</strong><a href="https://westvalley.edu">westvalley.edu</a><p>WASC-accredited community college.</p></li>
-      <li><strong>International Alert Academy</strong><a href="https://alertacademy.com">alertacademy.com</a></li>
+      <li><strong>Live Oak Academy</strong><a href="https://liveoakacademy.org">liveoakacademy.org</a><p>LOA is a hybrid program meeting 3 full days a week and assigning at-home work for the remaining two days. All courses are college-preparatory and pedagogically deep. The curriculum follows a classical approach, teaching students how to think rather than what to think, by using the liberal arts, the Great Books, and the developmental stages of the Trivium to cultivate wisdom and virtue. Class sizes range from 8–15, and classwork includes projects, labs, presentations, reading, discussion, group projects, and exams.</p></li>
+      <li><strong>Community Colleges</strong><a href="https://foothill.edu">Foothill College, foothill.edu</a><a href="https://deanza.edu">De Anza College, deanza.edu</a><a href="https://westvalley.edu">West Valley College, westvalley.edu</a><p>Accredited by the Accrediting Commission for Community and Junior Colleges.</p></li>
+      <li><strong>International Alert Academy</strong><a href="https://alertacademy.com">alertacademy.com</a><p>Alert utilizes a military-style structure, intentional discipleship, unique experiences, and professional skills training to create an environment that facilitates the forging process, which is: the Gospel transforms, discipline strengthens, hardship matures, camaraderie sharpens, training equips, and service focuses. Recruits participate in cadres of 7 recruits and a unit of 75 recruits.</p></li>
     </ul>
   </div>
 </section>
@@ -258,18 +252,36 @@
     <div class="two">
       <div>
         <h3>Grades</h3>
-        <p>Course grades are determined by course instructors alone, based on completion of syllabus requirements, and recorded directly on our transcript. Grades from all courses attempted are reported on transcripts.</p>
+        <p>Final course grades are at the sole discretion of the outside instructor, contingent upon the fulfillment of syllabus requirements, and are entered directly onto the student transcript. Grades from all courses attempted are reported on transcripts.</p>
         <div class="scale"><span>A 90–100%</span><span>B 80–89%</span><span>C 70–79%</span><span>D 60–69%</span><span>F ≤59%</span></div>
-        <p>We provide both unweighted and weighted GPA, with 1.0 added for AP and community college courses. All subjects except P.E. and Bible are included in the GPA calculation. The two semesters run August–May.</p>
+        <p>We provide both unweighted and weighted Grade Point Average (GPA), with 1.0 added for AP and Community College courses. All subjects except for P.E. and Bible are included in the GPA calculation. The two semesters run August–May.</p>
         <h3>Graduation Requirements</h3>
-        <p>More than 220 credits, going far beyond the minimum requirements for graduation under California law, plus 40 community service hours each year.</p>
+        <p>260 credits, going far beyond the minimum requirements for graduation under California law, plus 40 community service hours each year.</p>
+        <table class="req">
+          <thead><tr><th>Course</th><th>Credits</th><th>Comments</th></tr></thead>
+          <tbody>
+            <tr><td>Bible</td><td>10–30</td><td>4 years required</td></tr>
+            <tr><td>Math</td><td>40</td><td>4 years required</td></tr>
+            <tr><td>Science</td><td>40</td><td>4 years required</td></tr>
+            <tr><td>English</td><td>40</td><td></td></tr>
+            <tr><td>Social Studies / History</td><td>40</td><td></td></tr>
+            <tr><td>Visual &amp; Performing Arts (VPA)</td><td>10</td><td></td></tr>
+            <tr><td>World Languages</td><td>30</td><td>2 years of the same language required</td></tr>
+            <tr><td>Physical Education and Health</td><td>30</td><td></td></tr>
+            <tr><td>Electives</td><td>20</td><td>20 minimum credits</td></tr>
+          </tbody>
+        </table>
       </div>
       <div>
-        <h3>Standardized Testing</h3>
-        <p>Standardized test results are available, including the SAT, AP, Avant STAMP 4S Language Assessment (ACTFL framework), and the National Spanish Exam.</p>
-        <p class="note">Class of 2027: our one graduate scored 1580 on the SAT (780 Reading &amp; Writing, 800 Math), compared with national and California averages:</p>
+        <h3>Standardized Test Results</h3>
+        <ul class="tests">
+          <li><strong>Avant STAMP 4S Language Assessment (ACTFL Framework), Spanish</strong> – Functionally Fluent: Reading – Advanced High, Writing – Intermediate High, Listening – Advanced High, Speaking – Advanced Low.</li>
+          <li><strong>Avant STAMP 4S Language Assessment (ACTFL Framework), German</strong> – Functionally Fluent: Reading – Advanced High, Writing – Intermediate High, Listening – Advanced High, Speaking – Intermediate High.</li>
+          <li><strong>National Spanish Exam</strong> – Oro (Gold) Award, 90% among those with Outside Experience (Immersive Programs or Heritage Speakers).</li>
+          <li><strong>SAT</strong> – 1580: 780 in Reading and Writing and 800 in Math.</li>
+        </ul>
         <table>
-          <thead><tr><th></th><th>National</th><th>California</th><th>Student</th></tr></thead>
+          <thead><tr><th>SAT</th><th>National</th><th>California</th><th>Student</th></tr></thead>
           <tbody>
             <tr><td>Reading &amp; Writing</td><td>528</td><td>560</td><td class="hl">780</td></tr>
             <tr><td>Math</td><td>517</td><td>548</td><td class="hl">800</td></tr>
