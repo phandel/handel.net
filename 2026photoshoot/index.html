@@ -91,12 +91,12 @@
 
   <section id="palette">
     <h2>The palette</h2>
-    <p class="intro">Nine colors. Everyone wears one or two of them, plus a neutral, so the photo reads as one family without anyone matching.</p>
+    <p class="intro">Ten colors. Everyone wears one or two of them, plus a neutral, so the photo reads as one family without anyone matching.</p>
     <div class="swatches" id="swatches"></div>
     <div class="rule">
       <p><b>Leave at home:</b> pure white and pure black (they blow out or go flat on sand), logos and words, neon, small busy prints, and everyone in identical jeans.</p>
       <p><b>Do bring texture:</b> knit, linen, corduroy, silk, suede. On an overcast November beach, texture gives the photo depth when the light is soft.</p>
-      <p><b>Denim:</b> keep it to one or two people (Adele, plus a dark wash on Peter or Robert). Mix washes rather than matching.</p>
+      <p><b>Denim:</b> keep it to one or two people (dark wash on Peter and Robert). Mix washes rather than matching.</p>
     </div>
   </section>
 
@@ -160,10 +160,10 @@
 const C={
   rust:["Rust","#a24f2f"], camel:["Camel","#b88a5a"], mustard:["Mustard","#c9973a"], apricot:["Apricot","#e08a55"],
   olive:["Olive","#6f7442"], seaglass:["Sea glass","#8fb5ad"], dusty:["Dusty blue","#7f97b0"], navy:["Deep navy","#2f3c55"],
-  oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#3d4c66"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"]
+  oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#323d58"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"], dune:["Dune camel","#b38b67"], dew:["Dewstone blue","#7492b2"], carbon:["Carbon blue","#34466b"], slate:["Slate blue","#46607f"], brick:["Brick linen","#a9604a"], moss:["Olive-brown chenille","#6c5b2f"], olivekhaki:["Olive khaki","#8e8b63"]
 };
 const col=k=>C[k][1];
-const palette=[["rust","Julie"],["camel","Peter · Geri’s cardigan"],["mustard","Adele · Jordan"],["apricot","Leo"],["olive","August"],["seaglass","Amy"],["dusty","Eden · Kara"],["navy","Marcus · Marcus Owen"],["oat","Geri · Robert"]];
+const palette=[["rust","Julie"],["camel","Julie’s & Geri’s cardigans"],["mustard","Jordan"],["brick","Leo"],["olive","August · Peter"],["seaglass","Amy"],["dusty","Adele · Kara"],["slate","Eden"],["navy","Marcus · Marcus Owen · Adele’s cardigan"],["oat","Geri · Robert · Eden’s sweater"]];
 document.getElementById("swatches").innerHTML=palette.map(([k,w])=>`<div class="sw"><div class="chip" style="background:${col(k)}"></div><div class="t"><b>${C[k][0]}</b><span>${w}</span></div></div>`).join("");
 
 /* figure drawing: viewBox 0 0 120 300, feet at y≈292 */
@@ -213,7 +213,15 @@ function figure(p){
   if(p.layer==="cardigan")o+=`<path d="M40 63 L30 150 L44 172 L46 98Z M80 63 L90 150 L76 172 L74 98Z" fill="${p.cardigan}"/>`;
   if(p.kind==="dress"){o+=legs(p,"bare");o+=arms(p,p.sleeves?p.top:null,p.sleeveLen);o+=dress(p.top,p.dress);
     if(p.puff)o+=`<ellipse cx="39" cy="70" rx="9.5" ry="11" fill="${p.top}"/><ellipse cx="81" cy="70" rx="9.5" ry="11" fill="${p.top}"/><path d="M33 76 Q39 82 45 76 M75 76 Q81 82 87 76" fill="none" stroke="${shade(p.top,-.2)}" stroke-width="1.2"/>`;
-    if(p.belt)o+=`<path d="M46 124 Q60 128 74 124" stroke="${p.belt}" stroke-width="3.5" fill="none"/>`;}
+    if(p.belt)o+=`<path d="M46 124 Q60 128 74 124" stroke="${p.belt}" stroke-width="3.5" fill="none"/>`;
+    if(p.pullover){const c=p.pullover;
+      o+=`<path d="M40 63 Q29 65 28.5 92 L27.5 146 L37.5 147 L41 98 Z" fill="${c}"/><path d="M80 63 Q91 65 91.5 92 L92.5 146 L82.5 147 L79 98 Z" fill="${c}"/>`;
+      o+=`<path d="M40 62 Q60 56 80 62 L82 98 L80 160 L40 160 L38 98 Z" fill="${c}"/><path d="M50 60 Q60 66 70 60" fill="none" stroke="${shade(c,-.12)}" stroke-width="3"/>`;
+      o+=`<path d="M41 154 L79 154 M28 141 L37.5 141 M82.5 141 L92 141" stroke="${shade(c,-.12)}" stroke-width="6" stroke-dasharray="1 1.6"/>`;}
+    if(p.sweater){const c=p.sweater;
+      o+=`<path d="M40 63 Q30 65 29.5 92 L28.5 145 L37 146 L40.5 98 Z" fill="${c}"/><path d="M80 63 Q90 65 90.5 92 L91.5 145 L83 146 L79.5 98 Z" fill="${c}"/>`;
+      o+=`<path d="M41 62 Q48 58 54 60 L52 128 L44 128 L40 98 Z" fill="${c}"/><path d="M79 62 Q72 58 66 60 L68 128 L76 128 L80 98 Z" fill="${c}"/>`;
+      o+=`<path d="M44 124 L52 124 M68 124 L76 124 M29 141 L37 141 M83 141 L91 141" stroke="${shade(c,-.14)}" stroke-width="4" stroke-dasharray="1 1.6"/>`;}}
   else{o+=legs(p,p.pants,p.bottom);o+=arms(p,p.sleeve||p.top,p.sleeveLen);
     if(p.inner)o+=torso(p.inner,154);
     if(p.over)o+=overshirt(p.over,p.inner);else o+=torso(p.top,p.topLen||152,p.tex);
@@ -230,26 +238,26 @@ const P={
    look:"Oatmeal knit pant set with a long camel cardigan",dots:["oat","camel"],
    items:["Matching top and pull-on wide-leg pants in a brushed sweater knit or soft jersey","Elastic waist, a relaxed tunic-length top, nothing tight at the arms","Long camel cardigan for warmth that can come off for some shots","Neutral flat sandals or soft slip-ons, small gold earrings"],
    why:"The softest neutral in the photo, so she sits naturally in the middle of every grouping."},
- peter:{name:"Peter Handel",who:"Dad · 50",kind:"sep",hair:"short",hairColor:"#9a7650",skin:SK.b,top:col("camel"),bottom:col("dkdenim"),pants:"jeans",tex:"fluffy",h:1.0,
-   look:"Fluffy camel sweater with dark jeans",dots:["camel","dkdenim"],
-   items:["Brushed mohair-blend or teddy-texture crewneck in camel or caramel","Ecru tee or collar peeking out at the neck is optional","Dark-wash straight jeans, rolled once if barefoot"],
-   why:"Camel is the bridge between Julie’s rust and Grandma’s oatmeal, and a fuzzy texture photographs warmly in soft light."},
- julie:{name:"Julie Handel",who:"Mom · 46",kind:"dress",dress:"flow",puff:true,sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#6b4a33",skin:SK.a,top:col("rust"),h:.97,
-   look:"Her silky autumn dress with puffed sleeves",dots:["rust"],
-   items:["The dress she already has. It sets the palette for everyone else","Barefoot or thin tan sandals","Small gold jewelry. Skip a necklace if the neckline is busy","A camel or ecru wrap for between shots"],
-   why:"The movement of a silky skirt in sea wind is the shot. Everyone else is chosen to sit next to it."},
- leo:{name:"Leo Handel",who:"17 · spring coloring",kind:"sep",hair:"medium",hairColor:"#8a6a48",skin:SK.c,top:col("apricot"),inner:null,bottom:col("stone"),pants:"chino",tex:"buttons",sleeveLen:"three",h:1.04,
-   look:"Apricot linen shirt with stone chinos",dots:["apricot","stone"],
-   items:["Soft orange in a clear, warm shade (apricot or melon) in linen or washed cotton","Sleeves rolled to the forearm, untucked or front-tucked","Stone or light-khaki chinos, barefoot"],
-   why:"His favorite orange, in the clear spring version that suits him, and a lighter echo of Julie’s rust across the group."},
- eden:{name:"Eden Handel",who:"14",kind:"dress",dress:"column",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#a8845a",skin:SK.c,top:col("dusty"),h:.93,
-   look:"Dusty blue column dress with long sleeves",dots:["dusty"],
-   items:["Straight or softly flared midi in dusty or slate blue, no ruffles, no puff","Rib knit, crepe or jersey. Long sleeves keep her warm and keep the lines clean","Simple crew or square neckline, barefoot"],
-   why:"Her blue matches the water and connects her to Amy and Marcus on the other side of the group."},
- adele:{name:"Adele Handel",who:"12",kind:"sep",hair:"long",hairColor:"#c27a4a",skin:SK.a,top:col("cream"),inner:col("cream"),over:col("mustard"),bottom:col("denim"),pants:"jeans",sleeve:col("mustard"),h:.86,
-   look:"Mustard cord shacket over ecru, with light jeans",dots:["mustard","cream","denim"],
-   items:["Oversized mustard corduroy overshirt worn open, sleeves pushed up","Ecru or oatmeal ribbed tee underneath, no graphics","Mid- or light-wash wide-leg or straight jeans, cuffed"],
-   why:"Jeans and a really cool shirt, as asked. Mustard looks great with her strawberry-blonde hair."},
+ peter:{name:"Peter Handel",who:"Dad · 50",kind:"sep",hair:"short",hairColor:"#9a7650",skin:SK.b,top:col("moss"),bottom:col("dkdenim"),pants:"jeans",tex:"zip",h:1.0,collar:col("moss"),
+   look:"Olive-brown chenille quarter-zip with dark-rinse jeans",dots:["moss","dkdenim"],
+   items:["Gap chenille quarter-zip mock-neck sweater in olive brown","Gap dark-rinse relaxed straight jeans, rolled once if barefoot","Barefoot or brown leather shoes"],
+   why:"The soft chenille photographs warmly in low light, and the olive-brown sits between Julie’s rust and August’s green."},
+ julie:{name:"Julie Handel",who:"Mom · 46",kind:"dress",dress:"flow",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#6b4a33",skin:SK.a,top:col("rust"),sweater:col("dune"),h:.97,
+   look:"Her silky autumn dress with a Dune Camel cropped cardigan",dots:["rust","dune"],
+   items:["The dress she already has. It sets the palette for everyone else","Quince baby alpaca cropped V-neck cardigan in Dune Camel, worn open or buttoned. It ends at the waist, so the skirt still moves","Barefoot or thin tan sandals","Small gold jewelry. Skip a necklace if the neckline is busy"],
+   why:"The silky skirt moving in the sea wind is still the shot. The camel cardigan keeps her warm and ties her to Grandma’s camel cardigan in front of her."},
+ leo:{name:"Leo Handel",who:"17",kind:"sep",hair:"medium",hairColor:"#8a6a48",skin:SK.c,top:col("brick"),bottom:col("olivekhaki"),pants:"wide",tex:"buttons",sleeveLen:"short",h:1.04,collar:col("brick"),
+   look:"Brick-rust linen short-sleeve shirt with olive-khaki wide-leg chinos",dots:["brick","olivekhaki"],
+   items:["Gap short-sleeve linen shirt in brick rust, untucked or front-tucked","Gap relaxed wide-leg chinos in olive khaki","Barefoot or brown leather shoes; bring a jacket for between shots in the cold"],
+   why:"His favorite warm orange-red in an easy linen, and an echo of Julie’s rust from the other end of the back row."},
+ eden:{name:"Eden Handel",who:"14",kind:"dress",dress:"flow",hair:"long",hairColor:"#a8845a",skin:SK.c,top:col("slate"),pullover:col("cream"),h:.93,
+   look:"Slate blue chiffon midi dress, with and without an ecru alpaca sweater",dots:["slate","cream"],
+   items:["Sleeveless slate-blue chiffon midi dress with a draped boat neck and a full skirt that moves in the wind","Quince Lofty Baby Alpaca Oversized Crew in Ecru Mist Ivory over it for some shots (shown in the drawing), and the dress on its own for others","Barefoot or tan sandals; a thin layer underneath for the cold"],
+   why:"The flowing chiffon will move beautifully in the sea wind, and the ecru sweater gives two looks from one outfit while tying her to Grandma’s and Robert’s neutrals."},
+ adele:{name:"Adele Handel",who:"12",kind:"dress",dress:"flow",hair:"long",hairColor:"#c27a4a",skin:SK.a,top:col("dew"),sweater:col("carbon"),h:.86,
+   look:"Dewstone blue fit-and-flare dress with a Carbon Blue cropped cardigan",dots:["dew","carbon"],
+   items:["Quince Flowknit fit-and-flare midi dress in Heather Dewstone Blue","Quince baby alpaca cropped V-neck cardigan in Carbon Blue over it, open or buttoned","Barefoot or tan sandals; a thin layer underneath if it’s cold"],
+   why:"Two shades of blue look great with her strawberry-blonde hair, and the deep carbon cardigan echoes Marcus’s navy."},
  august:{name:"August Handel",who:"11 · favorite color green",kind:"sep",hair:"short",hairColor:"#c0703c",skin:SK.a,top:col("olive"),bottom:col("khaki"),pants:"chino",tex:"henley",h:.8,
    look:"Olive waffle henley with khaki pants",dots:["olive","khaki"],
    items:["Long-sleeve waffle-knit henley in olive or moss green","Khaki or tan pull-on chinos or joggers (comfortable for sitting in sand)","Barefoot, sleeves pushed up"],
@@ -273,7 +281,7 @@ const P={
  jordan:{name:"Jordan",who:"Marcus’s niece · 20s · dark hair, warm coloring",kind:"dress",dress:"flow",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#3b2a20",skin:SK.b,top:col("mustard"),belt:col("cream"),h:.94,
    look:"Mustard dress with an ecru cable-knit cardigan",dots:["mustard","cream"],
    items:["Sweater dress or flowy long-sleeve dress in mustard or golden ochre, no logos or prints","A chunky ecru or cream cable knit (like the one in her photo) to wear over it or between shots","Hair down, barefoot or tan sandals"],
-   why:"Golden mustard glows against dark hair and warm skin, and it balances Adele’s mustard on the other side of the front row."},
+   why:"Golden mustard glows against dark hair and warm skin, and she’s now the only one in mustard, so she adds a warm glow to the front row."},
  marcusowen:{name:"Marcus Owen",who:"Marcus’s nephew · 20s · dark hair",kind:"sep",hair:"medium",hairColor:"#2b201a",skin:SK.b,top:col("navy"),bottom:col("khaki"),pants:"chino",tex:"cable",h:1.03,
    look:"Navy knit sweater with khaki chinos",dots:["navy","khaki"],
    items:["Navy crewneck sweater with a little texture (cable or rib), like the one in his photo","Khaki or tan chinos, rolled once if barefoot","Barefoot or simple brown sandals"],
@@ -287,8 +295,8 @@ document.getElementById("people").innerHTML=order.map(k=>{const p=P[k];
   <div><ul>${p.items.map(i=>`<li>${i}</li>`).join("")}</ul><p style="font-size:.86rem;margin:8px 0 0"><i>${p.why}</i></p></div></article>`}).join("");
 
 /* group scene */
-const back=[["robert",90],["kara",220],["peter",350],["julie",480],["amy",610],["marcus",740],["leo",870]];
-const front=[["adele",155],["marcusowen",300],["geri",480],["jordan",640],["august",790],["eden",930]];
+const back=[["amy",70],["marcus",193],["peter",316],["julie",439],["robert",562],["kara",685],["marcusowen",808],["leo",931]];
+const front=[["jordan",160],["adele",345],["geri",500],["august",655],["eden",840]];
 let g="";
 g+=`<path d="M0 252 Q250 246 500 252 T1000 250 L1000 262 Q750 256 500 262 T0 260Z" fill="#fff" opacity=".35"/>`;
 const place=(k,x,y,s)=>{const p=P[k];const S=s*p.h*1.0;return `<g transform="translate(${x-60*S} ${y-296*S}) scale(${S})">${figure(p)}</g>`};
