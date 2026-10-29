@@ -74,6 +74,30 @@
   .groups b{display:block}
   footer{padding-block:20px 50px;color:var(--muted);font-size:.85rem}
   @media (max-width:420px){.card{grid-template-columns:96px minmax(0,1fr)}.card svg{width:96px;height:240px}}
+  /* print / PDF: keep colors and backgrounds, fit the scene, keep cards whole */
+  @page{size:letter;margin:.45in}
+  @media print{
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    :root{--bg:#f6f3ee;--paper:#fffdf9;--ink:#2b2a2e;--muted:#6c6862;--line:#e3ddd3;--sea:#5f7f86;--sand:#e9dcc6;--accent:#9c4f2e;
+      --sky1:#f3d9bf;--sky2:#d9e1e2;--water:#9fb4b5;--beach:#e8d8bd;--beach2:#dcc7a5;color-scheme:light}
+    html{font-size:12px}
+    .wrap{max-width:none;padding-inline:0}
+    header.top{padding-block:0 8px}
+    section{padding-block:16px}
+    .scene-scroll{overflow:visible}
+    .scene svg{min-width:0}
+    .scene,.sw,.card,.groups div,.cols>div,.note{break-inside:avoid}
+    h2,h3{break-after:avoid}
+    .people{display:block;font-size:0}
+    .people .card{display:inline-grid;width:calc(50% - 6px);margin:0 12px 12px 0;vertical-align:top;font-size:12px}
+    .people .card:nth-child(2n){margin-right:0}
+    .rule{display:block}
+    .rule p{margin:0 0 6px;break-inside:avoid}
+    .swatches{grid-template-columns:repeat(5,1fr)}
+    .sw .chip{height:44px}
+    .rule{margin-top:12px}
+    .card li a{color:var(--accent)}
+  }
 </style>
 </head>
 <body>
