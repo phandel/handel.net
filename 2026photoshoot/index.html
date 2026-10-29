@@ -59,6 +59,7 @@
   .card .look{margin:0 0 8px;font-weight:500}
   .card ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--muted)}
   .card li{margin:2px 0}
+  .card li a{color:var(--accent);text-underline-offset:2px}
   .dots{display:flex;gap:5px;margin:6px 0 2px}
   .dots i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:block}
   .maybe{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border:1px dashed var(--muted);color:var(--muted);border-radius:999px;padding:1px 7px;margin-left:8px;vertical-align:1px;font-family:var(--body);white-space:nowrap}
@@ -159,7 +160,7 @@
 const C={
   rust:["Rust","#b0562d"], camel:["Camel","#b88a5a"], mustard:["Mustard","#c9973a"], apricot:["Apricot","#e08a55"],
   olive:["Olive","#6f7442"], seaglass:["Sea glass","#8fb5ad"], dusty:["Dusty blue","#7f97b0"], navy:["Deep navy","#2f3c55"],
-  oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#323d58"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"], dune:["Dune camel","#b38b67"], dew:["Dewstone blue","#7492b2"], carbon:["Carbon blue","#34466b"], slate:["Slate blue","#46607f"], brick:["Brick linen","#a9604a"], moss:["Olive-brown chenille","#6c5b2f"], olivekhaki:["Olive khaki","#8e8b63"]
+  oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#323d58"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"], dune:["Dune camel","#b38b67"], dew:["Dewstone blue","#7492b2"], carbon:["Carbon blue","#34466b"], slate:["Slate blue","#46607f"], brick:["Brick linen","#a9604a"], moss:["Olive-brown chenille","#6c5b2f"], olivekhaki:["Khaki","#a69d7f"]
 };
 const col=k=>C[k][1];
 const palette=[["rust","Julie"],["camel","Julie’s & Geri’s cardigans"],["mustard","Jordan"],["brick","Leo"],["olive","August · Peter"],["seaglass","Amy"],["dusty","Adele · Kara"],["slate","Eden"],["navy","Marcus · Marcus Owen · Adele’s cardigan"],["oat","Geri · Robert · Eden’s sweater"]];
@@ -239,23 +240,23 @@ const P={
    why:"The softest neutral in the photo, so she sits naturally in the middle of every grouping."},
  peter:{name:"Peter Handel",who:"Dad · 50",kind:"sep",hair:"short",hairColor:"#9a7650",skin:SK.b,top:col("moss"),bottom:col("dkdenim"),pants:"jeans",tex:"zip",h:1.0,collar:col("moss"),
    look:"Olive-brown chenille quarter-zip with dark-rinse jeans",dots:["moss","dkdenim"],
-   items:["Gap chenille quarter-zip mock-neck sweater in olive brown","Gap dark-rinse relaxed straight jeans, rolled once if barefoot","Barefoot or brown leather shoes"],
+   items:["<a href='https://content.gapinc.com/b/0063/564/672/cn63564672.png?width=1440' target='_blank' rel='noopener'>Gap chenille quarter-zip mock-neck sweater</a> in olive brown","<a href='https://content.gapinc.com/b/0064/121/679/cn64121679.png?width=1440' target='_blank' rel='noopener'>Gap dark-rinse relaxed straight jeans</a>, rolled once if barefoot","Barefoot or brown leather shoes"],
    why:"The soft chenille photographs warmly in low light, and the olive-brown sits between Julie’s rust and August’s green."},
  julie:{name:"Julie Handel",who:"Mom · 46",kind:"dress",dress:"flow",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#6a5440",skin:SK.a,top:col("rust"),sweater:col("dune"),h:.97,
    look:"Her burnt-orange smocked maxi dress with a Dune Camel cropped cardigan",dots:["rust","dune"],
-   items:["Her burnt-orange dress: square neckline, smocked bodice, long puffed sleeves with smocked cuffs, and a long, flowing skirt. It sets the palette for everyone else","Worn with the cardigan for some shots and on its own for others, so the puffed sleeves show","Quince baby alpaca cropped V-neck cardigan in Dune Camel, buttoned. It ends at the waist, so the skirt still moves","Barefoot or thin tan sandals","Small gold jewelry. Skip a necklace if the neckline is busy"],
+   items:["Her burnt-orange dress: square neckline, smocked bodice, long puffed sleeves with smocked cuffs, and a long, flowing skirt. It sets the palette for everyone else","Worn with the cardigan for some shots and on its own for others, so the puffed sleeves show","<a href='https://www.quince.com/women/women-s-lightweight-baby-alpaca-cropped-cardigan?color=dune-camel' target='_blank' rel='noopener'>Quince baby alpaca cropped V-neck cardigan in Dune Camel</a>, buttoned. It ends at the waist, so the skirt still moves","Barefoot or thin tan sandals","Small gold jewelry. Skip a necklace if the neckline is busy"],
    why:"The silky skirt moving in the sea wind is still the shot. The camel cardigan keeps her warm and ties her to Grandma’s camel cardigan in front of her."},
  leo:{name:"Leo Handel",who:"17",kind:"sep",hair:"medium",hairColor:"#8a6a48",skin:SK.c,top:col("brick"),bottom:col("olivekhaki"),pants:"wide",tex:"buttons",sleeveLen:"short",h:1.04,collar:col("brick"),
-   look:"Brick-rust linen short-sleeve shirt with olive-khaki wide-leg chinos",dots:["brick","olivekhaki"],
-   items:["Gap short-sleeve linen shirt in brick rust, untucked or front-tucked","Gap relaxed wide-leg chinos in olive khaki","Barefoot or brown leather shoes; bring a jacket for between shots in the cold"],
+   look:"Brick-rust linen short-sleeve shirt with khaki wide-leg chinos",dots:["brick","olivekhaki"],
+   items:["<a href='https://content.gapinc.com/b/0063/789/148/cn63789148.png?width=1440' target='_blank' rel='noopener'>Gap short-sleeve linen shirt</a> in brick rust, untucked or front-tucked","<a href='https://content.gapinc.com/b/0063/046/369/cn63046369.png?width=1440' target='_blank' rel='noopener'>Gap relaxed wide-leg chinos</a> in a khaki with a slight olive cast","Barefoot or brown leather shoes; bring a jacket for between shots in the cold"],
    why:"His favorite warm orange-red in an easy linen, and an echo of Julie’s rust from the other end of the back row."},
  eden:{name:"Eden Handel",who:"14",kind:"dress",dress:"flow",hair:"long",hairColor:"#a8845a",skin:SK.c,top:col("slate"),pullover:col("cream"),h:.93,
    look:"Slate blue chiffon midi dress, with and without an ecru alpaca sweater",dots:["slate","cream"],
-   items:["Sleeveless slate-blue chiffon midi dress with a draped boat neck and a full skirt that moves in the wind","Quince Lofty Baby Alpaca Oversized Crew in Ecru Mist Ivory over it for some shots (shown in the drawing), and the dress on its own for others","Barefoot or tan sandals; a thin layer underneath for the cold"],
+   items:["<a href='https://christine-brewer.com/products/chiffon-draped-neck-pleated-midi-dress-for-women' target='_blank' rel='noopener'>Christine Brewer chiffon draped-neck pleated midi dress</a> in slate blue: sleeveless, with a draped boat neck and a full skirt that moves in the wind","<a href='https://www.quince.com/women/women-s-lofty-baby-alpaca-oversized-crew?color=ecru-mist-ivory' target='_blank' rel='noopener'>Quince Lofty Baby Alpaca Oversized Crew in Ecru Mist Ivory</a> over it for some shots (shown in the drawing), and the dress on its own for others","Barefoot or tan sandals; a thin layer underneath for the cold"],
    why:"The flowing chiffon will move beautifully in the sea wind, and the ecru sweater gives two looks from one outfit while tying her to Grandma’s and Robert’s neutrals."},
  adele:{name:"Adele Handel",who:"12",kind:"dress",dress:"flow",hair:"long",hairColor:"#c27a4a",skin:SK.a,top:col("dew"),sweater:col("carbon"),h:.86,
    look:"Dewstone blue fit-and-flare dress with a Carbon Blue cropped cardigan",dots:["dew","carbon"],
-   items:["Quince Flowknit fit-and-flare midi dress in Heather Dewstone Blue","Quince baby alpaca cropped V-neck cardigan in Carbon Blue over it, open or buttoned","Barefoot or tan sandals; a thin layer underneath if it’s cold"],
+   items:["<a href='https://www.quince.com/women/flowknit-ultra-soft-fit-flare-dress?color=heather-dewstone-blue' target='_blank' rel='noopener'>Quince Flowknit fit-and-flare midi dress in Heather Dewstone Blue</a>","<a href='https://www.quince.com/women/women-s-lightweight-baby-alpaca-cropped-cardigan?color=carbon-blue' target='_blank' rel='noopener'>Quince baby alpaca cropped V-neck cardigan in Carbon Blue</a> over it, open or buttoned","Barefoot or tan sandals; a thin layer underneath if it’s cold"],
    why:"Two shades of blue look great with her strawberry-blonde hair, and the deep carbon cardigan echoes Marcus’s navy."},
  august:{name:"August Handel",who:"11 · favorite color green",kind:"sep",hair:"short",hairColor:"#c0703c",skin:SK.a,top:col("olive"),bottom:col("khaki"),pants:"chino",tex:"henley",h:.8,
    look:"Olive waffle henley with khaki pants",dots:["olive","khaki"],
