@@ -82,7 +82,7 @@
   <header class="top">
     <p class="eyebrow">Family portraits · on the beach · November</p>
     <h1>Driftwood &amp; <em>golden hour</em></h1>
-    <p class="lede">A coordinated, not matching, palette for ten people: warm autumn colors around Julie’s dress, cooled down with sea-blues and soft neutrals that look right against grey-blue water and pale sand. Each look below starts from what that person asked for.</p>
+    <p class="lede">A coordinated, not matching, palette for thirteen people: warm autumn colors around Julie’s dress, cooled down with sea-blues and soft neutrals that look right against grey-blue water and pale sand. Each look below starts from what that person asked for.</p>
     <div class="scene">
       <div class="scene-scroll"><svg id="scene" viewBox="0 0 1000 400" role="img" aria-label="Illustration of the whole group standing on the beach in their outfits"></svg></div>
     </div>
@@ -115,7 +115,8 @@
       <div><b>Grandma and her girls</b>Geri, Julie and Amy, arm in arm.</div>
       <div><b>Grandma and the grandkids</b>All the cousins around Geri.</div>
       <div><b>The Buchanans</b>Amy, Marcus and Robert.</div>
-      <div><b>Couples</b>Peter and Julie, Amy and Marcus.</div>
+      <div><b>Couples</b>Peter and Julie, Amy and Marcus, Robert and Kara.</div>
+      <div><b>Marcus and his niece and nephew</b>Marcus with Jordan and Marcus Owen, then add Amy.</div>
       <div><b>The four kids</b>Walking along the waterline, away from the camera, then back toward it.</div>
       <div><b>The cousins</b>Leo, Eden, Adele, August and Robert.</div>
     </div>
@@ -162,7 +163,7 @@ const C={
   oat:["Oatmeal","#e3d6c0"], cream:["Ecru","#efe7d8"], stone:["Stone","#c9bba3"], denim:["Mid denim","#6e86a3"], dkdenim:["Dark denim","#3d4c66"], khaki:["Khaki","#b6a582"], ivory:["Warm ivory","#f2ead9"]
 };
 const col=k=>C[k][1];
-const palette=[["rust","Julie"],["camel","Peter · Geri’s cardigan"],["mustard","Adele"],["apricot","Leo"],["olive","August"],["seaglass","Amy"],["dusty","Eden"],["navy","Marcus"],["oat","Geri · Robert"]];
+const palette=[["rust","Julie"],["camel","Peter · Geri’s cardigan"],["mustard","Adele · Jordan"],["apricot","Leo"],["olive","August"],["seaglass","Amy"],["dusty","Eden · Kara"],["navy","Marcus · Marcus Owen"],["oat","Geri · Robert"]];
 document.getElementById("swatches").innerHTML=palette.map(([k,w])=>`<div class="sw"><div class="chip" style="background:${col(k)}"></div><div class="t"><b>${C[k][0]}</b><span>${w}</span></div></div>`).join("");
 
 /* figure drawing: viewBox 0 0 120 300, feet at y≈292 */
@@ -264,9 +265,21 @@ const P={
  robert:{name:"Robert Buchanan",who:"20s",maybe:true,kind:"sep",hair:"medium",hairColor:"#5e4532",skin:SK.b,top:col("oat"),bottom:col("dkdenim"),pants:"jeans",tex:"cable",h:1.03,
    look:"Oatmeal fisherman sweater with dark jeans",dots:["oat","dkdenim"],
    items:["Chunky cable or waffle knit in oatmeal or ecru","Dark-wash jeans","Works with almost any coloring, so easy if he joins last minute"],
-   why:"A neutral that ties him to Grandma and keeps the cousin side of the photo calm."}
+   why:"A neutral that ties him to Grandma and keeps the cousin side of the photo calm."},
+ kara:{name:"Kara",who:"Robert’s girlfriend · fair, blonde",maybe:true,kind:"dress",dress:"flow",sleeves:true,sleeveLen:"long",hair:"ponytail",hairColor:"#e2c58e",skin:SK.c,top:col("dusty"),belt:col("camel"),h:.95,
+   look:"Dusty blue midi dress with a camel belt",dots:["dusty","camel"],
+   items:["Flowy midi dress in dusty or soft slate blue, in a fabric that moves (crepe, jersey or light knit)","Long or 3/4 sleeves for the November wind","Thin camel belt, tan sandals or barefoot, small gold jewelry. Hair down or in a low ponytail"],
+   why:"Soft dusty blue flatters fair skin and blonde hair, stands next to Robert’s oatmeal sweater, and ties her to Eden in the front row."},
+ jordan:{name:"Jordan",who:"Marcus’s niece · 20s · dark hair, warm coloring",kind:"dress",dress:"flow",sleeves:true,sleeveLen:"long",hair:"long",hairColor:"#3b2a20",skin:SK.b,top:col("mustard"),belt:col("cream"),h:.94,
+   look:"Mustard dress with an ecru cable-knit cardigan",dots:["mustard","cream"],
+   items:["Sweater dress or flowy long-sleeve dress in mustard or golden ochre, no logos or prints","A chunky ecru or cream cable knit (like the one in her photo) to wear over it or between shots","Hair down, barefoot or tan sandals"],
+   why:"Golden mustard glows against dark hair and warm skin, and it balances Adele’s mustard on the other side of the front row."},
+ marcusowen:{name:"Marcus Owen",who:"Marcus’s nephew · 20s · dark hair",kind:"sep",hair:"medium",hairColor:"#2b201a",skin:SK.b,top:col("navy"),bottom:col("khaki"),pants:"chino",tex:"cable",h:1.03,
+   look:"Navy knit sweater with khaki chinos",dots:["navy","khaki"],
+   items:["Navy crewneck sweater with a little texture (cable or rib), like the one in his photo","Khaki or tan chinos, rolled once if barefoot","Barefoot or simple brown sandals"],
+   why:"Navy is already his color, it echoes his uncle Marcus, and it gives the front row one deep anchor."}
 };
-const order=["geri","peter","julie","leo","eden","adele","august","amy","marcus","robert"];
+const order=["geri","peter","julie","leo","eden","adele","august","amy","marcus","robert","kara","jordan","marcusowen"];
 document.getElementById("people").innerHTML=order.map(k=>{const p=P[k];
   return `<article class="card"><svg viewBox="0 0 120 300" role="img" aria-label="Outfit mockup for ${p.name}">${scaleWrap(figure(p),p.h)}</svg>
   <div><h3>${p.name}</h3><p class="who">${p.who}${p.maybe?'<span class="maybe">if joining</span>':''}</p><p class="look">${p.look}</p>
@@ -274,8 +287,8 @@ document.getElementById("people").innerHTML=order.map(k=>{const p=P[k];
   <div><ul>${p.items.map(i=>`<li>${i}</li>`).join("")}</ul><p style="font-size:.86rem;margin:8px 0 0"><i>${p.why}</i></p></div></article>`}).join("");
 
 /* group scene */
-const back=[["robert",140],["amy",280],["marcus",420],["peter",560],["julie",700],["leo",840]];
-const front=[["adele",210],["geri",490],["eden",770],["august",930]];
+const back=[["robert",90],["kara",220],["peter",350],["julie",480],["amy",610],["marcus",740],["leo",870]];
+const front=[["adele",155],["marcusowen",300],["geri",480],["jordan",640],["august",790],["eden",930]];
 let g="";
 g+=`<path d="M0 252 Q250 246 500 252 T1000 250 L1000 262 Q750 256 500 262 T0 260Z" fill="#fff" opacity=".35"/>`;
 const place=(k,x,y,s)=>{const p=P[k];const S=s*p.h*1.0;return `<g transform="translate(${x-60*S} ${y-296*S}) scale(${S})">${figure(p)}</g>`};
