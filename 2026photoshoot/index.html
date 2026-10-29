@@ -295,8 +295,8 @@ document.getElementById("people").innerHTML=order.map(k=>{const p=P[k];
   <div><ul>${p.items.map(i=>`<li>${i}</li>`).join("")}</ul><p style="font-size:.86rem;margin:8px 0 0"><i>${p.why}</i></p></div></article>`}).join("");
 
 /* group scene */
-const back=[["amy",70],["marcus",193],["peter",316],["julie",439],["robert",562],["kara",685],["marcusowen",808],["leo",931]];
-const front=[["jordan",160],["adele",345],["geri",500],["august",655],["eden",840]];
+const back=[["robert",70],["kara",193],["peter",316],["julie",439],["amy",562],["marcus",685],["leo",808],["marcusowen",931]];
+const front=[["jordan",125],["adele",377],["geri",500],["august",623],["eden",870]];
 let g="";
 g+=`<path d="M0 252 Q250 246 500 252 T1000 250 L1000 262 Q750 256 500 262 T0 260Z" fill="#fff" opacity=".35"/>`;
 const place=(k,x,y,s)=>{const p=P[k];const S=s*p.h*1.0;return `<g transform="translate(${x-60*S} ${y-296*S}) scale(${S})">${figure(p)}</g>`};
