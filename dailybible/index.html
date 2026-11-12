@@ -2259,7 +2259,7 @@ document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target = '_b
       if (box) line.appendChild(box);
       const nm = el('span', 'mvn'); while (name.firstChild) nm.appendChild(name.firstChild); line.appendChild(nm);
       line.appendChild(el('span', 'mlen', cs[o + 1].textContent)); v.appendChild(line);
-      const det = el('details', 'mwhat'); det.appendChild(el('summary', null, 'What happens there'));
+      const det = el('details', 'mwhat'); if (box) det.open = true; det.appendChild(el('summary', null, 'What happens there'));
       det.appendChild(el('div', null, cs[o + 2].innerHTML + '<div class="mview">' + cs[o + 3].innerHTML + '</div>')); v.appendChild(det);
       if (box) vids.appendChild(v); else refs.push(v);
     });
