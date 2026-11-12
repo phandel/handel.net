@@ -2,6 +2,14 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daily Bible Video Index</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Daily Bible">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#6b2a2a">
 <meta name="description" content="Daily Audio Bible one-year plan with daily podcast links in Spanish and English, Promised Land films and BibleProject videos for each day's reading, and boxes to tick off each day.">
 <style>
 body{font-family:Georgia,serif;max-width:1200px;margin:24px auto;padding:0 16px;background:#fff;color:#222}
@@ -22,6 +30,45 @@ details.help{margin:10px 0}
 details.help summary{cursor:pointer;font-weight:bold;color:#6b2a2a;font-size:11pt;padding:4px 0}
 .psg{margin:3px 0 5px}
 .psg b{white-space:nowrap}
+/* Phone layout (html.m is set by the phone script on narrow screens) */
+html.m body{margin:0 auto;padding:0 12px;font-size:17px}
+html.m .scroll{display:none}
+html.m h1{font-size:19pt!important;margin-top:12px!important}
+html.m .bar{font-size:10.5pt;padding:8px 10px;gap:6px 10px;margin:0 -12px;border-radius:0}
+html.m .bar button{padding:7px 10px;font-size:10.5pt}
+html.m #sync{flex-basis:100%;font-size:9.5pt!important;opacity:.85}
+.mnav{display:flex;gap:6px;flex-basis:100%;align-items:stretch}
+.mnav button{flex:1;min-height:38px}
+.mnav button.on{background:#e4efe1;color:#2f6b3a}
+.mcard{border:1px solid #d8d0c6;border-top:4px solid #6b2a2a;border-radius:10px;padding:12px 14px;margin:14px 0;background:#fff;content-visibility:auto;contain-intrinsic-size:auto 700px;scroll-margin-top:120px}
+.mcard.done{background:#e4efe1}
+.mhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mdate{font-size:22px;font-weight:bold;color:#6b2a2a}
+.mday{color:#555;font-size:14px;text-align:right}
+.mtop{display:flex;justify-content:space-between;align-items:center;margin:10px 0 4px}
+html.m .dayall{font-size:17px;padding:4px 0}
+html.m .prayer{font-size:17px;font-weight:bold}
+html.m input.ck,html.m input.all{width:26px;height:26px;vertical-align:middle;margin:0 6px 0 0}
+.mpod{display:flex;gap:8px;align-items:center;margin:12px 0}
+.mpod span{font-size:14px;color:#555}
+.mpod a{flex:1;text-align:center;background:#6b2a2a;color:#fff;padding:11px 6px;border-radius:9px;text-decoration:none;font-weight:bold}
+.mrl{display:flex;align-items:center;font-weight:bold;margin:8px 0 4px}
+.mread .psg{font-size:15.5px;line-height:1.45;margin:7px 0}
+.mvids{margin-top:10px;border-top:1px solid #e3dbd2;padding-top:4px}
+.mvhead{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b2a2a;margin:8px 0 0}
+.mvl{display:flex;gap:8px;align-items:center;padding:9px 0 2px}
+.mvn{flex:1;line-height:1.35}
+.mlen{color:#777;font-size:14px;white-space:nowrap}
+.mwhat summary,.mrefs summary{font-size:14px;color:#6b2a2a;cursor:pointer;padding:4px 0}
+.mwhat>div{font-size:14px;color:#444;margin:2px 0 8px;line-height:1.4}
+.mview{margin-top:4px;color:#555}
+.mrefs{margin-top:8px;border-top:1px solid #e3dbd2;padding-top:4px}
+.mrefs .mvid{color:#666;font-size:15px}
+.mnone{color:#777;font-style:italic;margin:8px 0}
+.maudio{font-size:13px;color:#777;margin-top:10px}
+#mcards.one .mcard{display:none}
+#mcards.one .mcard.cur{display:block;content-visibility:visible}
+html.m.oneday #filmref{display:none}
 </style></head>
 <body>
 <h1 style="font-size:20pt;margin:0 0 4px">Bible Reading Through the Year: Daily Index</h1>
@@ -29,7 +76,7 @@ details.help summary{cursor:pointer;font-weight:bold;color:#6b2a2a;font-size:11p
 <div class="bar"><span id="prog">0 of 365 days finished</span><a id="next" href="#day-1">Go to last finished day ›</a><span id="sync" style="font-size:10pt"></span><button id="join" type="button">Turn on sharing</button><button id="reset" type="button">Clear all ticks</button><span id="pw" hidden><input id="pwin" type="password" placeholder="Password" autocomplete="off" style="font:inherit;font-size:10pt;padding:2px 6px;border:0;border-radius:4px;width:110px"> <button id="pwgo" type="button">Clear</button> <button id="pwno" type="button">Cancel</button> <span id="pwmsg"></span></span></div>
 <details class="help"><summary>How to use this page</summary>
 <p style="font-size:10pt">For each day: the reading, with links to that day's Daily Audio Bible podcast episode in Spanish and English; each video with a link and its length; what happens at that place in the day's reading; and which day each film is watched. The “Apple Podcasts” links open that day's Daily Audio Bible episode in Spanish or English straight in the Podcasts app on an iPhone, iPad or Mac, where the transcript button shows the words as they are read; “Audio file” plays the recording in the browser instead. To keep the viewing light, there are no more than one or two videos on almost every day: each Promised Land film is watched once, usually the first day the reading names the place that still has room; each BibleProject overview comes within about two weeks of its book starting; and each Daily Audio Bible book introduction within about a week. Gray rows are a film's other appearances, listed for reference. Promised Land films and Daily Audio Bible (DAB) book introductions are in the Daily Audio Bible app (Community › Watch, or Related Visuals in each day's episode player); their links open the app. BibleProject links open the German video, with the English version below it. Verses are quoted from the King James Version. 110 different Promised Land films; about 17 hours of video to watch in all. The podcast links play the most recent recording of that day's episode; now and then the Spanish episode splits a New Testament passage a few verses differently.</p>
-<p style="font-size:10pt"><b>Ticking off a day:</b> tick the box by the reading and by each video to watch as you finish it (gray rows are for reference and have no box). When everything for a day is ticked, the day turns green. The table always starts with the next unfinished day; days before it are moved to the bottom. “Done” in the date column ticks the whole day at once. “Prayer log” under it opens the daily prayer log in Notes. Ticks are shared by the whole family: a tick on any phone, tablet or computer shows on all of them. The first time you use the page on a device, click “Turn on sharing” and enter the family password; the device remembers it. Until then, ticks are kept on that device and are added to the shared list as soon as sharing is turned on.</p>
+<p style="font-size:10pt"><b>Ticking off a day:</b> tick the box by the reading and by each video to watch as you finish it (gray rows are for reference and have no box). When everything for a day is ticked, the day turns green. The table always starts with the next unfinished day; days before it are moved to the bottom. On a phone, the page shows one day at a time: use ‹ Prev, Next › (or swipe), Today to jump to the next unfinished day, and All days to see every day in a list. To put it on your Home Screen like an app, open it in Safari, tap Share, then Add to Home Screen. “Done” in the date column ticks the whole day at once. “Prayer log” under it opens the daily prayer log in Notes. Ticks are shared by the whole family: a tick on any phone, tablet or computer shows on all of them. The first time you use the page on a device, click “Turn on sharing” and enter the family password; the device remembers it. Until then, ticks are kept on that device and are added to the shared list as soon as sharing is turned on.</p>
 </details>
 <div class="scroll"><table class="idx" style="border-collapse:collapse;width:100%">
 <tr><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:7%">Date</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:31%">Reading</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:14%">Video</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:5%">Length</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:31%">What happens there</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:12%">Viewing</th></tr>
@@ -2180,6 +2227,92 @@ details.help summary{cursor:pointer;font-weight:bold;color:#6b2a2a;font-size:11p
 <script>
 document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target = '_blank'; a.rel = 'noopener'; });
 </script>
+<script>
+// Phone layout: on a narrow screen the table becomes one card per day, showing one day at a time
+// (with Previous / Today / Next and a "Whole year" list). Runs before the tick script, which then finds
+// the same tick boxes inside the cards.
+(function(){
+  if (!matchMedia('(max-width: 760px)').matches) return;
+  const root = document.documentElement; root.classList.add('m', 'oneday');
+  const table = document.querySelector('table.idx'); if (!table) return;
+  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+  const days = {};
+  table.querySelectorAll('tr[data-day]').forEach(tr => (days[tr.dataset.day] = days[tr.dataset.day] || []).push(tr));
+  const order = Object.keys(days).map(Number).sort((a, b) => a - b);
+  const wrap = el('div'); wrap.id = 'mcards'; wrap.className = 'one';
+  order.forEach(d => {
+    const trs = days[d], c0 = trs[0].cells[0], c1 = trs[0].cells[1];
+    const card = el('section', 'mcard'); card.dataset.day = d; card.id = 'day-' + d; trs[0].removeAttribute('id');
+    const watch = c0.querySelector('span');
+    card.appendChild(el('div', 'mhead', '<span class="mdate">' + c0.querySelector('b').textContent + '</span><span class="mday">Day ' + d + (watch ? '<br>' + watch.textContent : '') + '</span>'));
+    const top = el('div', 'mtop'); top.appendChild(c0.querySelector('label.dayall')); top.appendChild(c0.querySelector('a.prayer')); card.appendChild(top);
+    const spans = [...c1.children].filter(x => x.tagName === 'SPAN');
+    const apple = spans.find(x => x.textContent.startsWith('Apple')), audio = spans.find(x => x.textContent.startsWith('Audio'));
+    if (apple) { const p = el('div', 'mpod', '<span>Listen</span>'); apple.querySelectorAll('a').forEach(a => p.appendChild(a)); card.appendChild(p); }
+    const rd = el('div', 'mread'), rl = el('label', 'mrl'); rl.appendChild(c1.querySelector('input.ck')); rl.append('Reading'); rd.appendChild(rl);
+    c1.querySelectorAll('.psg').forEach(p => rd.appendChild(p)); card.appendChild(rd);
+    const vids = el('div', 'mvids'), refs = [];
+    trs.forEach(tr => {
+      const cs = tr.cells; if (cs.length < 4) return;
+      const o = cs.length - 4, name = cs[o], box = name.querySelector('input.ck');
+      const v = el('div', 'mvid'), line = el(box ? 'label' : 'div', 'mvl');
+      if (box) line.appendChild(box);
+      const nm = el('span', 'mvn'); while (name.firstChild) nm.appendChild(name.firstChild); line.appendChild(nm);
+      line.appendChild(el('span', 'mlen', cs[o + 1].textContent)); v.appendChild(line);
+      const det = el('details', 'mwhat'); det.appendChild(el('summary', null, 'What happens there'));
+      det.appendChild(el('div', null, cs[o + 2].innerHTML + '<div class="mview">' + cs[o + 3].innerHTML + '</div>')); v.appendChild(det);
+      if (box) vids.appendChild(v); else refs.push(v);
+    });
+    if (vids.children.length) { vids.prepend(el('div', 'mvhead', 'Watch today')); card.appendChild(vids); }
+    else card.appendChild(el('div', 'mnone', 'No video to watch today'));
+    if (refs.length) { const r = el('details', 'mrefs'); r.appendChild(el('summary', null, 'Other films that go with today (' + refs.length + ')')); refs.forEach(x => r.appendChild(x)); card.appendChild(r); }
+    if (audio) { audio.className = 'maudio'; audio.removeAttribute('style'); card.appendChild(audio); }
+    wrap.appendChild(card);
+  });
+  const sc = table.closest('.scroll') || table; sc.after(wrap);
+  // Film reference section goes in its own box so it can be hidden in the one-day view.
+  const h2 = [...document.querySelectorAll('h2')].find(h => /Film Reference/.test(h.textContent));
+  if (h2) { const fr = el('div'); fr.id = 'filmref'; h2.before(fr); let n = h2; while (n && n.tagName !== 'SCRIPT') { const nx = n.nextSibling; fr.appendChild(n); n = nx; } }
+
+  const cards = {}; wrap.querySelectorAll('.mcard').forEach(c => cards[c.dataset.day] = c);
+  let cur = order[0], mode = 'one';
+  const nav = el('div', 'mnav', '<button type="button" data-a="prev">‹ Prev</button><button type="button" data-a="today">Today</button><button type="button" data-a="next">Next ›</button><button type="button" data-a="list">All days</button>');
+  document.querySelector('.bar').appendChild(nav);
+  const nextUnfinished = () => { const c = [...wrap.querySelectorAll('.mcard')].sort((a, b) => a.dataset.day - b.dataset.day).find(c => [...c.querySelectorAll('input.ck')].some(b => !b.checked)); return c ? +c.dataset.day : order[order.length - 1]; };
+  function rotate(t){ order.filter(d => d >= t).concat(order.filter(d => d < t)).forEach(d => wrap.appendChild(cards[d])); }
+  function show(d){
+    d = Math.min(Math.max(+d, order[0]), order[order.length - 1]);
+    if (cards[cur]) cards[cur].classList.remove('cur');
+    cur = d; cards[cur].classList.add('cur');
+    if (mode === 'one') scrollTo(0, 0); else cards[cur].scrollIntoView({block: 'start'});
+  }
+  function setMode(m){
+    mode = m; wrap.classList.toggle('one', m === 'one'); root.classList.toggle('oneday', m === 'one');
+    nav.querySelector('[data-a=list]').classList.toggle('on', m === 'list');
+    nav.querySelector('[data-a=list]').textContent = m === 'list' ? 'One day' : 'All days';
+  }
+  nav.addEventListener('click', e => {
+    const a = e.target.dataset.a; if (!a) return;
+    if (a === 'prev') show(cur - 1); else if (a === 'next') show(cur + 1);
+    else if (a === 'today') { const t = nextUnfinished(); rotate(t); show(t); }
+    else if (a === 'list') { setMode(mode === 'one' ? 'list' : 'one'); show(cur); }
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="#day-"]'); if (!a) return;
+    e.preventDefault(); show(a.getAttribute('href').slice(5));
+  });
+  let sx = null, sy = null;
+  wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive: true});
+  wrap.addEventListener('touchend', e => {
+    if (sx === null || mode !== 'one') return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1));
+  }, {passive: true});
+  const h = location.hash.match(/^#day-(\d+)$/);
+  show(h ? h[1] : order[0]);
+  window.dbMobile = { start(t){ rotate(t); if (!h) show(t); } };
+})();
+</script>
 <script type="module">
 // Shared ticks: one Firestore document for the whole family, opened with the family password.
 // A copy is kept in this browser so ticks show at once and survive being offline.
@@ -2210,7 +2343,7 @@ const $ = id => document.getElementById(id);
 function status(t){ $('sync').textContent = t; }
 function refresh(d){
   const all = byDay[d].every(b => b.checked);
-  document.querySelectorAll('tr[data-day="'+d+'"]').forEach(tr => tr.classList.toggle('done', all));
+  document.querySelectorAll('[data-day="'+d+'"]').forEach(tr => tr.classList.toggle('done', all));
   const a = document.querySelector('input.all[data-d="'+d+'"]'); if (a) a.checked = all;
 }
 let target = null, lastDone = null;
@@ -2233,6 +2366,7 @@ let moved = false, shown = null;
 ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => addEventListener(ev, () => { moved = true; }, {passive: true, once: true}));
 function goNext(){
   if (moved || target === null || target === shown) return;
+  if (window.dbMobile) { window.dbMobile.start(target); shown = target; return; }
   const first = document.querySelector('table.idx tr[data-day]');
   const tb = first && first.parentNode;
   if (!tb) return;
