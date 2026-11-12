@@ -29,7 +29,7 @@ details.help summary{cursor:pointer;font-weight:bold;color:#6b2a2a;font-size:11p
 <div class="bar"><span id="prog">0 of 365 days finished</span><a id="next" href="#day-1">Go to last finished day ›</a><span id="sync" style="font-size:10pt"></span><button id="join" type="button">Turn on sharing</button><button id="reset" type="button">Clear all ticks</button><span id="pw" hidden><input id="pwin" type="password" placeholder="Password" autocomplete="off" style="font:inherit;font-size:10pt;padding:2px 6px;border:0;border-radius:4px;width:110px"> <button id="pwgo" type="button">Clear</button> <button id="pwno" type="button">Cancel</button> <span id="pwmsg"></span></span></div>
 <details class="help"><summary>How to use this page</summary>
 <p style="font-size:10pt">For each day: the reading, with links to that day's Daily Audio Bible podcast episode in Spanish and English; each video with a link and its length; what happens at that place in the day's reading; and which day each film is watched. The “Apple Podcasts” links open that day's Daily Audio Bible episode in Spanish or English straight in the Podcasts app on an iPhone, iPad or Mac, where the transcript button shows the words as they are read; “Audio file” plays the recording in the browser instead. To keep the viewing light, there are no more than one or two videos on almost every day: each Promised Land film is watched once, usually the first day the reading names the place that still has room; each BibleProject overview comes within about two weeks of its book starting; and each Daily Audio Bible book introduction within about a week. Gray rows are a film's other appearances, listed for reference. Promised Land films and Daily Audio Bible (DAB) book introductions are in the Daily Audio Bible app (Community › Watch, or Related Visuals in each day's episode player); their links open the app. BibleProject links open the German video, with the English version below it. Verses are quoted from the King James Version. 110 different Promised Land films; about 17 hours of video to watch in all. The podcast links play the most recent recording of that day's episode; now and then the Spanish episode splits a New Testament passage a few verses differently.</p>
-<p style="font-size:10pt"><b>Ticking off a day:</b> tick the box by the reading and by each video to watch as you finish it (gray rows are for reference and have no box). When everything for a day is ticked, the day turns green. “Done” in the date column ticks the whole day at once. “Prayer log” under it opens the daily prayer log in Notes. Ticks are shared by the whole family: a tick on any phone, tablet or computer shows on all of them. The first time you use the page on a device, click “Turn on sharing” and enter the family password; the device remembers it. Until then, ticks are kept on that device and are added to the shared list as soon as sharing is turned on.</p>
+<p style="font-size:10pt"><b>Ticking off a day:</b> tick the box by the reading and by each video to watch as you finish it (gray rows are for reference and have no box). When everything for a day is ticked, the day turns green. The table always starts with the next unfinished day; days before it are moved to the bottom. “Done” in the date column ticks the whole day at once. “Prayer log” under it opens the daily prayer log in Notes. Ticks are shared by the whole family: a tick on any phone, tablet or computer shows on all of them. The first time you use the page on a device, click “Turn on sharing” and enter the family password; the device remembers it. Until then, ticks are kept on that device and are added to the shared list as soon as sharing is turned on.</p>
 </details>
 <div class="scroll"><table class="idx" style="border-collapse:collapse;width:100%">
 <tr><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:7%">Date</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:31%">Reading</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:14%">Video</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:5%">Length</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:31%">What happens there</th><th style="text-align:left;padding:4px 6px;border:1px solid #b9b0a6;background:#6b2a2a;color:#ffffff;font-size:10pt;width:12%">Viewing</th></tr>
@@ -2226,14 +2226,20 @@ function summary(){
 function paint(){ boxes.forEach(b => { b.checked = !!ticks[b.dataset.s]; }); days.forEach(refresh); summary(); }
 paint();
 
-// Open the page at the next unfinished day (unless the address names a day). Shared ticks arrive a moment
-// later, so move again then, but only if the person hasn't started scrolling.
+// Put the next unfinished day at the top of the table, with earlier days moved to the bottom (still in order).
+// Shared ticks arrive a moment after loading, so arrange again then, but not once the person has started
+// using the page (so rows never jump while someone is ticking or reading).
 let moved = false, shown = null;
 ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => addEventListener(ev, () => { moved = true; }, {passive: true, once: true}));
 function goNext(){
-  if (location.hash || moved || target === null || target === shown) return;
-  const row = document.getElementById('day-' + target);
-  if (row) { row.scrollIntoView({block: 'start'}); shown = target; }
+  if (moved || target === null || target === shown) return;
+  const first = document.querySelector('table.idx tr[data-day]');
+  const tb = first && first.parentNode;
+  if (!tb) return;
+  const rows = [...tb.querySelectorAll('tr[data-day]')].sort((x, y) => x.dataset.day - y.dataset.day);
+  rows.filter(r => +r.dataset.day >= target).concat(rows.filter(r => +r.dataset.day < target)).forEach(r => tb.appendChild(r));
+  shown = target;
+  if (location.hash) { const h = document.getElementById(location.hash.slice(1)); if (h) h.scrollIntoView({block: 'start'}); }
 }
 goNext();
 
