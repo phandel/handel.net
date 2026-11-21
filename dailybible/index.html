@@ -12,6 +12,18 @@
 <meta name="theme-color" content="#6b2a2a">
 <meta name="description" content="Daily Audio Bible one-year plan with daily podcast links in Spanish and English, Promised Land films and BibleProject videos for each day's reading, and boxes to tick off each day.">
 <style>
+#chk{position:fixed;inset:0;z-index:50;background:rgba(30,15,15,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+#chk[hidden]{display:none}
+#chk .box{background:#fff;color:#2a1d1d;border-top:6px solid #6b2a2a;border-radius:10px;max-width:460px;width:100%;max-height:85vh;overflow:auto;padding:16px 18px;box-shadow:0 12px 40px rgba(0,0,0,.35);font-size:12pt}
+#chk h3{margin:0 0 4px;color:#6b2a2a;font-size:14pt}
+#chk p{margin:0 0 10px;font-size:10.5pt;color:#5a4a4a}
+#chk .day{font-weight:bold;margin:10px 0 4px}
+#chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 4px;border-bottom:1px solid #eee3d8;cursor:pointer}
+#chk label input{width:20px;height:20px;flex:none;margin-top:1px}
+#chk .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+#chk button{font:inherit;font-size:11pt;border-radius:6px;padding:8px 14px;cursor:pointer;border:1px solid #6b2a2a;background:#fff;color:#6b2a2a}
+#chk button.go{background:#6b2a2a;color:#fff}
+
 body{font-family:Georgia,serif;max-width:1200px;margin:24px auto;padding:0 16px;background:#fff;color:#222}
 a{color:#1f4e79}
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -73,6 +85,7 @@ html.m.oneday #filmref{display:none}
 <body>
 <h1 style="font-size:20pt;margin:0 0 4px">Bible Reading Through the Year: Daily Index</h1>
 <p style="margin:0 0 12px;color:#555">Daily Audio Bible one-year plan · January 1 – December 31, 2027 · <span id="updated">Last updated November 10, 2026</span></p>
+<div id="chk" hidden role="dialog" aria-modal="true" aria-labelledby="chkh"><div class="box"><h3 id="chkh">Did you finish these?</h3><p>Last time you opened these from this page. Tick what you read or watched so the page moves on to the next day.</p><div id="chklist"></div><div class="btns"><button type="button" class="go" id="chkok">Tick them off</button><button type="button" id="chklater">Not yet</button><button type="button" id="chkno">I didn't do these</button></div></div></div>
 <div class="bar"><span id="prog">0 of 365 days finished</span><a id="next" href="#day-1">Go to last finished day ›</a><span id="sync" style="font-size:10pt"></span><button id="join" type="button">Turn on sharing</button><button id="reset" type="button">Clear all ticks</button><span id="pw" hidden><input id="pwin" type="password" placeholder="Password" autocomplete="off" style="font:inherit;font-size:10pt;padding:2px 6px;border:0;border-radius:4px;width:110px"> <button id="pwgo" type="button">Clear</button> <button id="pwno" type="button">Cancel</button> <span id="pwmsg"></span></span></div>
 <details class="help"><summary>How to use this page</summary>
 <p style="font-size:10pt">For each day: the reading, with links to that day's Daily Audio Bible podcast episode in Spanish and English; each video with a link and its length; what happens at that place in the day's reading; and which day each film is watched. The “Apple Podcasts” links open that day's Daily Audio Bible episode in Spanish or English straight in the Podcasts app on an iPhone, iPad or Mac, where the transcript button shows the words as they are read; “Audio file” plays the recording in the browser instead. To keep the viewing light, there are no more than one or two videos on almost every day: each Promised Land film is watched once, usually the first day the reading names the place that still has room; each BibleProject overview comes within about two weeks of its book starting; and each Daily Audio Bible book introduction within about a week. Gray rows are a film's other appearances, listed for reference. Promised Land films and Daily Audio Bible (DAB) book introductions are in the Daily Audio Bible app (Community › Watch, or Related Visuals in each day's episode player); their links open the app. BibleProject links open the German video, with the English version below it. Verses are quoted from the King James Version. 110 different Promised Land films; about 17 hours of video to watch in all. The podcast links play the most recent recording of that day's episode; now and then the Spanish episode splits a New Testament passage a few verses differently.</p>
@@ -2428,6 +2441,67 @@ async function go(){
 }
 $('pwgo').addEventListener('click', go);
 pwin.addEventListener('keydown', e => { if (e.key === 'Enter') go(); if (e.key === 'Escape') pwbox.hidden = true; });
+
+// Reminder to tick things off: when a reading or video link is opened from the page, remember it on this
+// device; the next time the page is opened (or you come back after 3+ minutes away), ask whether it was finished.
+const OPENED = 'dailybible-2027-opened';   // {data-s key: time opened}
+let opened = readJSON(OPENED) || {};
+const saveOpened = () => ls.set(OPENED, JSON.stringify(opened));
+const boxByS = {}; boxes.forEach(b => boxByS[b.dataset.s] = b);
+function boxFor(a){
+  const holder = a.closest('td,label,.mvid,.mread'); let b = holder && holder.querySelector('input.ck');
+  if (!b && a.closest('.mpod,.maudio')) { const card = a.closest('[data-day]'); b = card && boxByS[card.dataset.day + '-r']; }
+  return b;
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+  const h = a.getAttribute('href'); if (!h || h[0] === '#' || a.classList.contains('prayer')) return;
+  const b = boxFor(a); if (!b || b.checked) return;
+  opened[b.dataset.s] = Date.now(); saveOpened();
+}, true);
+function itemName(b){
+  const r = b.closest('.mread') || (b.closest('td') && b.closest('td').querySelector('.psg') ? b.closest('td') : null);
+  if (r) return 'Reading: ' + [...r.querySelectorAll('.psg b')].map(x => x.textContent.trim()).join(', ');
+  const a = (b.closest('label,td') || b.parentNode).querySelector('a');
+  return 'Video: ' + (a ? a.textContent.trim() : b.dataset.s);
+}
+const chk = $('chk'), chklist = $('chklist');
+let chkOpen = false;
+function askDone(){
+  const now = Date.now();
+  for (const k in opened) if (!boxByS[k] || ticks[k] || now - opened[k] > 21 * 864e5) delete opened[k];
+  saveOpened();
+  const keys = Object.keys(opened).sort((x, y) => parseInt(x) - parseInt(y) || opened[x] - opened[y]);
+  if (!keys.length) { if (chkOpen) { chk.hidden = true; chkOpen = false; } return; }
+  if (chkOpen) return;
+  chklist.textContent = ''; let lastDay = null;
+  keys.forEach(k => {
+    const d = k.split('-')[0];
+    if (d !== lastDay) { const t = document.querySelector('#day-' + d + ' b'); const h = document.createElement('div'); h.className = 'day'; h.textContent = 'Day ' + d + (t ? ' · ' + t.textContent : ''); chklist.appendChild(h); lastDay = d; }
+    const l = document.createElement('label'), c = document.createElement('input'); c.type = 'checkbox'; c.checked = true; c.value = k;
+    l.append(c, document.createTextNode(itemName(boxByS[k]))); chklist.appendChild(l);
+  });
+  chk.hidden = false; chkOpen = true; $('chkok').focus();
+}
+function closeChk(){ chk.hidden = true; chkOpen = false; }
+$('chkok').addEventListener('click', () => {
+  const m = {}; const ds = new Set();
+  chklist.querySelectorAll('input').forEach(c => { if (c.checked) { m[c.value] = true; boxByS[c.value].checked = true; ds.add(c.value.split('-')[0]); } delete opened[c.value]; });
+  saveOpened(); if (Object.keys(m).length) { change(m); ds.forEach(refresh); summary(); }
+  closeChk();
+});
+$('chklater').addEventListener('click', closeChk);
+$('chkno').addEventListener('click', () => { opened = {}; saveOpened(); closeChk(); });
+chk.addEventListener('keydown', e => { if (e.key === 'Escape') closeChk(); });
+const _paint = paint;
+paint = function(){ _paint(); if (chkOpen) askDone(); };
+let hiddenAt = 0;
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { hiddenAt = Date.now(); return; }
+  opened = readJSON(OPENED) || {};
+  if (hiddenAt && Date.now() - hiddenAt > 3 * 60e3) askDone();
+});
+setTimeout(askDone, 1200);   // after shared ticks have had a moment to arrive, so finished items aren't asked about
 
 const saved = ls.get(PWKEY);
 if (saved) connect(saved); else status('Ticks are kept on this device until sharing is turned on');
