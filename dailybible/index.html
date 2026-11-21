@@ -81,6 +81,28 @@ html.m input.ck,html.m input.all{width:26px;height:26px;vertical-align:middle;ma
 #mcards.one .mcard{display:none}
 #mcards.one .mcard.cur{display:block;content-visibility:visible}
 html.m.oneday #filmref{display:none}
+/* iPad layout (html.pad, set with html.m on iPads and other touch tablets): one day at a time, two columns:
+   the readings with very large references on the left, listening and videos smaller on the right */
+html.pad body{max-width:1180px;padding:0 24px;font-size:18px}
+html.pad .bar{margin:0;font-size:12pt}
+html.pad .mnav{flex-basis:auto;flex:1 1 420px}
+html.pad #sync{flex-basis:auto}
+html.pad .mcard{padding:18px 24px}
+html.pad .mdate{font-size:30px}
+html.pad .mday{font-size:16px}
+.pcols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:28px;margin-top:8px}
+.pleft{min-width:0}
+.pright{min-width:0;border-left:1px solid #e3dbd2;padding-left:22px;font-size:15px}
+html.pad .mrl{font-size:20px}
+html.pad .mread .psg{font-size:17px;line-height:1.45;margin:0 0 22px;color:#444}
+html.pad .mread .psg b{display:block;font-family:Georgia,'Times New Roman',serif;font-size:54px;line-height:1.1;color:#6b2a2a;margin-bottom:6px;letter-spacing:-.01em}
+html.pad .pright .mpod{flex-wrap:wrap;margin-top:4px}
+html.pad .pright .mpod span{flex-basis:100%;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#6b2a2a}
+html.pad .pright .mpod a{padding:9px 6px;font-size:15px}
+html.pad .pright .mvids{margin-top:14px}
+html.pad .pright .mvn{font-size:16px}
+html.pad .pright input.ck{width:24px;height:24px}
+@media (max-width:820px){ html.pad .mread .psg b{font-size:44px} .pcols{gap:20px} .pright{padding-left:16px} }
 </style></head>
 <body>
 <h1 style="font-size:20pt;margin:0 0 4px">Bible Reading Through the Year: Daily Index</h1>
@@ -2235,8 +2257,24 @@ document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target = '_b
 // (with Previous / Today / Next and a "Whole year" list). Runs before the tick script, which then finds
 // the same tick boxes inside the cards.
 (function(){
-  if (!matchMedia('(max-width: 760px)').matches) return;
-  const root = document.documentElement; root.classList.add('m', 'oneday');
+  // iPads (including iPadOS, which reports itself as a Mac) and other touch tablets get the two-column iPad layout.
+  const pad = /iPad/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+    || (matchMedia('(pointer: coarse)').matches && matchMedia('(min-width: 761px)').matches)
+    || /[?&]ipad\b/.test(location.search);   // ?ipad shows this layout on any computer
+  const phone = matchMedia('(max-width: 760px)').matches;
+  if (!phone && !pad) return;
+  const root = document.documentElement; root.classList.add('m', 'oneday'); if (pad && !phone) root.classList.add('pad');
+  const isPad = pad && !phone;
+  const BOOK = {'Gen':'Genesis','Ex':'Exodus','Lev':'Leviticus','Num':'Numbers','Deut':'Deuteronomy','Josh':'Joshua','Judg':'Judges',
+    '1 Sam':'1 Samuel','2 Sam':'2 Samuel','1 Chron':'1 Chronicles','2 Chron':'2 Chronicles','Eccl':'Ecclesiastes','Song':'Song of Songs',
+    'Jer':'Jeremiah','Lam':'Lamentations','Eze':'Ezekiel','Dan':'Daniel','Zech':'Zechariah','Matt':'Matthew','Rom':'Romans',
+    '1 Cor':'1 Corinthians','2 Cor':'2 Corinthians','Gal':'Galatians','Eph':'Ephesians','Phil':'Philippians','Col':'Colossians',
+    '1 Thes':'1 Thessalonians','2 Thes':'2 Thessalonians','1 Tim':'1 Timothy','2 Tim':'2 Timothy','Phile':'Philemon','Heb':'Hebrews',
+    '1 Pet':'1 Peter','2 Pet':'2 Peter','Rev':'Revelation','Pr':'Proverbs','Ps':'Psalm'};
+  const fullRef = t => { const m = t.match(/^(\d? ?[A-Za-z]+) (.*)$/); if (!m) return t;
+    let book = BOOK[m[1]] || m[1], ref = m[2].replace(/-/g, '\u2013');
+    if (/^(Obadiah|Philemon|Jude|2 John|3 John)$/.test(book)) ref = ref.replace(/^1:/, '');   // one-chapter books: verses only
+    return book + ' ' + ref; };
   const table = document.querySelector('table.idx'); if (!table) return;
   const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
   const days = {};
@@ -2270,6 +2308,12 @@ document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target = '_b
     else card.appendChild(el('div', 'mnone', 'No video to watch today'));
     if (refs.length) { const r = el('details', 'mrefs'); r.appendChild(el('summary', null, 'Other films that go with today (' + refs.length + ')')); refs.forEach(x => r.appendChild(x)); card.appendChild(r); }
     if (audio) { audio.className = 'maudio'; audio.removeAttribute('style'); card.appendChild(audio); }
+    if (isPad) {   // two columns: readings (big references) | listen + videos
+      rd.querySelectorAll('.psg > b').forEach(b => { b.textContent = fullRef(b.textContent.trim()); });
+      const cols = el('div', 'pcols'), L = el('div', 'pleft'), Rt = el('div', 'pright');
+      L.appendChild(rd); [...card.children].filter(x => x.matches('.mpod,.mvids,.mnone,.mrefs,.maudio')).forEach(x => Rt.appendChild(x));
+      cols.append(L, Rt); card.appendChild(cols);
+    }
     wrap.appendChild(card);
   });
   const sc = table.closest('.scroll') || table; sc.after(wrap);
