@@ -2573,4 +2573,23 @@ const saved = ls.get(PWKEY);
 if (saved) connect(saved); else status('Ticks are kept on this device until sharing is turned on');
 </script>
 
+<script>
+// Home Screen app: iOS keeps the old page open for days. When the app comes back to the front (or opens),
+// ask the server whether a newer page was published, and if so reload once. Ticks live in Firebase/localStorage, so a reload keeps them.
+(function(){
+  const mine = Date.parse(document.lastModified) || 0;
+  async function check(){
+    try {
+      const last = +sessionStorage.getItem('dbReloadAt') || 0;
+      if (Date.now() - last < 120000) return;
+      const r = await fetch(location.pathname + '?v=' + Date.now(), {method: 'HEAD', cache: 'no-store'});
+      const theirs = Date.parse(r.headers.get('last-modified') || '') || 0;
+      if (theirs && mine && theirs > mine + 1000) { sessionStorage.setItem('dbReloadAt', Date.now()); location.reload(); }
+    } catch (e) {}
+  }
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+  addEventListener('pageshow', check);
+  check();
+})();
+</script>
 </body></html>
