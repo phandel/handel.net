@@ -81,6 +81,14 @@ html.m input.ck,html.m input.all{width:26px;height:26px;vertical-align:middle;ma
 #mcards.one .mcard{display:none}
 #mcards.one .mcard.cur{display:block;content-visibility:visible}
 html.m.oneday #filmref{display:none}
+/* Film list pop-up: on phones/iPads "1 of 2" etc. open the film's viewings here, since the Film Reference section is hidden */
+.fsheet{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
+.fsheet[hidden]{display:none}
+.fbox{background:#fff;width:100%;max-width:720px;max-height:85vh;overflow:auto;-webkit-overflow-scrolling:touch;border-radius:14px 14px 0 0;padding:14px 16px calc(20px + env(safe-area-inset-bottom))}
+.fbox .fclose{float:right;font:inherit;font-size:16px;background:#6b2a2a;color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.fbox h3{font-size:22px;color:#6b2a2a;margin:4px 0 6px!important}
+.fbox p,.fbox td,.fbox th{font-size:15px!important}
+.fbox td a{display:inline-block;padding:4px 0}
 /* iPad layout (html.pad, set with html.m on iPads and other touch tablets): one day at a time, two columns:
    the readings with very large references on the left, listening and videos smaller on the right */
 html.pad body{max-width:1180px;padding:0 24px;font-size:18px}
@@ -2348,6 +2356,20 @@ document.querySelectorAll('a[href^="http"]').forEach(function(a){ a.target = '_b
     const a = e.target.closest && e.target.closest('a[href^="#day-"]'); if (!a) return;
     e.preventDefault(); show(a.getAttribute('href').slice(5));
   });
+  // "1 of 2", "Repeat (2 of 2)", "Also here" point into the Film Reference section, which is hidden here,
+  // so show that film's viewings in a pop-up; tapping a date there goes to that day.
+  const sheet = el('div', 'fsheet'); sheet.hidden = true; document.body.appendChild(sheet);
+  const closeSheet = () => { sheet.hidden = true; document.body.style.overflow = ''; };
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="#film-"]'); if (!a) return;
+    const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
+    e.preventDefault();
+    const f = (t.closest('.film') || t).cloneNode(true);
+    f.querySelectorAll('[id]').forEach(x => x.removeAttribute('id'));
+    const box = el('div', 'fbox', '<button type="button" class="fclose">Close</button>'); box.appendChild(f);
+    sheet.innerHTML = ''; sheet.appendChild(box); sheet.hidden = false; document.body.style.overflow = 'hidden';
+  });
+  sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('.fclose') || e.target.closest('a[href^="#day-"]')) closeSheet(); });
   let sx = null, sy = null;
   wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive: true});
   wrap.addEventListener('touchend', e => {
